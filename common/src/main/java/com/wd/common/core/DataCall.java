@@ -12,4 +12,6 @@ public interface DataCall<T> {
     void success(T data,Object...args);
     void fail(ApiException data, Object...args);
 
+
+
 }
