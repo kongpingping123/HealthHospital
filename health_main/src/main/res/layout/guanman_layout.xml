@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/dp_20"
+        android:id="@+id/lin_lin1"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_48">
+
+        <View
+            android:id="@+id/bing_zheng_view1"
+            android:background="#3087ea"
+            android:layout_gravity="center_vertical"
+            android:visibility="gone"
+            android:layout_width="@dimen/dp_4"
+            android:layout_height="@dimen/dp_20"/>
+
+        <TextView
+            android:id="@+id/text_view8"
+            android:text="内科"
+            android:textSize="@dimen/sp_14"
+            android:gravity="center"
+            android:textColor="#333333"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

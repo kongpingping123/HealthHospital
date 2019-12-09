@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.DrugsActivity">
+  <RelativeLayout
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content">
+      <ImageView
+          android:layout_width="@dimen/dp_32"
+          android:layout_height="@dimen/dp_32"
+          android:layout_marginLeft="@dimen/dp_12"
+          android:layout_marginTop="@dimen/dp_32"
+          android:layout_centerVertical="true"
+          android:background="@drawable/wallet_icon_clock_n"
+          />
+      <ImageView
+          android:layout_width="@dimen/dp_32"
+          android:layout_height="@dimen/dp_32"
+          android:layout_alignParentRight="true"
+          android:layout_marginRight="@dimen/dp_12"
+
+          android:layout_centerVertical="true"
+          android:layout_marginLeft="@dimen/dp_320"
+          android:src="@drawable/common_nav_message_white_n"
+          />
+  </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/sp_6"
+        android:background="#A09797"
+        />
+    <RadioGroup
+          android:layout_width="match_parent"
+          android:layout_height="@dimen/dp_36"
+          android:id="@+id/radio_group1"
+          android:background="#fff"
+          android:orientation="horizontal"
+          >
+          <RadioButton
+              android:layout_width="0dp"
+              android:layout_height="match_parent"
+              android:layout_weight="1"
+              android:text="常见病症"
+               android:button="@null"
+              android:id="@+id/ra01"
+               android:textSize="@dimen/sp_16"
+               android:gravity="center"
+              />
+          <RadioButton
+              android:layout_width="0dp"
+              android:layout_height="match_parent"
+              android:layout_weight="1"
+              android:text="常用药品"
+              android:button="@null"
+              android:id="@+id/ra02"
+              android:textSize="@dimen/sp_16"
+              android:gravity="center"
+              />
+
+      </RadioGroup>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_4"
+        android:background="#A09797"
+        />
+
+        <androidx.viewpager.widget.ViewPager
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/view_pager1"
+            ></androidx.viewpager.widget.ViewPager>
+
+
+</LinearLayout>

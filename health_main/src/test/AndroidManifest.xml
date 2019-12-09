@@ -3,7 +3,10 @@
     package="com.wd.health_main">
 
     <application>
-        <activity android:name=".activity.HomeActivity"></activity>
+        <activity android:name=".activity.InsertActivity"/>
+        <activity android:name=".activity.CommonActivity"></activity>
+        <activity android:name=".activity.DrugsActivity" />
+        <activity android:name=".activity.HomeActivity" />
         <activity android:name=".activity.GuidanceActivity" />
         <activity android:name=".activity.MainActivity">
             <intent-filter>
