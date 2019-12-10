@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginLeft="@dimen/dp_10">
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/inquiry_sim"
+        app:roundedCornerRadius="@dimen/dp_4"
+        android:layout_marginTop="@dimen/dp_18"
+        android:layout_width="@dimen/dp_91"
+        android:layout_height="@dimen/dp_110"/>
+    <TextView
+        android:id="@+id/inquiry_tv"
+        android:textColor="#ffffff"
+        android:textSize="@dimen/sp_12"
+        android:text="asdasd"
+        android:gravity="center"
+        android:background="@drawable/inquiry_style"
+        android:layout_marginTop="@dimen/dp_102"
+        android:layout_width="@dimen/dp_91"
+        android:layout_height="@dimen/dp_26"/>
+
+
+</RelativeLayout>

@@ -95,8 +95,13 @@
                 android:gravity="center"></TextView>
 
         </LinearLayout>
+        <View
+            android:background="#CFCFCF"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"/>
 
         <LinearLayout
+            android:background="@drawable/circle_style"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp_10"
@@ -228,8 +233,6 @@
                 android:layout_alignParentRight="true"></com.facebook.drawee.view.SimpleDraweeView>
 
             <androidx.recyclerview.widget.RecyclerView
-                android:layout_marginTop="@dimen/dp_18"
-                android:layout_marginBottom="@dimen/dp_18"
                 android:id="@+id/rv_doctor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
