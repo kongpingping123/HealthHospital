@@ -12,6 +12,8 @@ import com.facebook.common.util.ByteConstants;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.imagepipeline.cache.MemoryCacheParams;
 import com.facebook.imagepipeline.core.ImagePipelineConfig;
+import com.tencent.mm.opensdk.openapi.IWXAPI;
+import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 
 
 /**
@@ -44,10 +46,15 @@ public class WDApplication extends Application {
     private static Context context;
 
     private static SharedPreferences sharedPreferences;
+    public static IWXAPI api;
+    public static IWXAPI getWXApi(){
+        return api;
 
+    }
     @Override
     public void onCreate() {
         super.onCreate();
+        regoToWx();
         context = this;
         mMainThreadId = android.os.Process.myTid();
         mMainThread = Thread.currentThread();
@@ -64,7 +71,10 @@ public class WDApplication extends Application {
         //推送
         //统计
     }
-
+    private void regoToWx() {
+        api = WXAPIFactory.createWXAPI(this, "wxe3fcbe8a55cd33ff", true);
+        api.registerApp("wxe3fcbe8a55cd33ff");
+    }
     @Override
     public void onTerminate() {
         super.onTerminate();

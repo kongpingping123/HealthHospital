@@ -246,11 +246,16 @@
                                 android:background="#F2F2F2" />
 
 
-                                 <androidx.recyclerview.widget.RecyclerView
-                                     android:layout_width="match_parent"
-                                     android:layout_height="match_parent"
-                                     android:id="@+id/recy_view"
-                                     ></androidx.recyclerview.widget.RecyclerView>
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/recy_view"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginBottom="@dimen/dp_10"
+                                ></androidx.recyclerview.widget.RecyclerView>
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/dp_2"
+                                android:background="#F2F2F2" />
                             <androidx.recyclerview.widget.RecyclerView
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
@@ -270,6 +275,7 @@
                   android:layout_height="@dimen/dp_32"
                   android:layout_marginLeft="@dimen/dp_12"
                   android:layout_centerVertical="true"
+                  android:id="@+id/text_login"
                   android:background="@drawable/wallet_icon_clock_n"
                   />
               <EditText

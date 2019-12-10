@@ -27,9 +27,9 @@ import com.wd.common.core.exception.ApiException;
 import com.wd.common.util.Constant;
 import com.wd.health_main.R;
 import com.wd.health_main.R2;
-import com.wd.health_main.adapter.DepartmentAdapter;
 import com.wd.health_main.activity.DeiserActivity;
 import com.wd.health_main.activity.SousuoActivity;
+import com.wd.health_main.adapter.DepartmentAdapter;
 import com.wd.health_main.adapter.InformationAdapter;
 import com.wd.health_main.adapter.MyXiangqingadapter;
 import com.wd.health_main.adapter.MyZixunadapter;
@@ -43,9 +43,6 @@ import com.zhouwei.mzbanner.holder.MZViewHolder;
 
 import java.util.List;
 
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -72,6 +69,8 @@ public class CinemaFragment extends WDFragment {
 
     @BindView(R2.id.sousuo)
     EditText sousuo;
+    @BindView(R2.id.text_login)
+    ImageView textLogin;
     private int id1;
     private int int2;
     private int ido;
@@ -98,6 +97,15 @@ public class CinemaFragment extends WDFragment {
 
     @Override
     protected void initView() {
+
+        textLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intentByRouter(Constant.ACTIVITY_URL_MY_LOGIN);
+            }
+        });
+
+
         //问诊
         FindDepartmentPresenter findDepartmentPresenter = new FindDepartmentPresenter(new FDepart());
         findDepartmentPresenter.reqeust();
@@ -128,14 +136,14 @@ public class CinemaFragment extends WDFragment {
 
         //健康详情
 
-           LinearLayoutManager linearLayoutManager =  new LinearLayoutManager(getContext());
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
 
-           linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
-           recyView1.setLayoutManager(linearLayoutManager);
+        linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
+        recyView1.setLayoutManager(linearLayoutManager);
 
 
         informationAdapter = new InformationAdapter(getContext());
-           recyView1.setAdapter(informationAdapter);
+        recyView1.setAdapter(informationAdapter);
         /*linearLayoutManager1 = new LinearLayoutManager(getContext());
         myXiangqingadapter = new MyXiangqingadapter(getContext(), MyXiangqingadapter.HOT_TYPE);*/
         // myXiangqingadapter = new MyXiangqingadapter(getContext(),MyXiangqingadapter.FASHION_TYPE);
@@ -148,7 +156,7 @@ public class CinemaFragment extends WDFragment {
 //        linearLayoutManager1 = new LinearLayoutManager(getContext());
 //        myXiangqingadapter = new MyXiangqingadapter(getContext());
 //        recyView1.setLayoutManager(linearLayoutManager1);
-//        recyView1.setAdapter(myXiangqingadapter);
+//           recyView1.setAdapter(myXiangqingadapter);
 
 
         //常见病症
@@ -177,7 +185,7 @@ public class CinemaFragment extends WDFragment {
 
     @OnClick(R2.id.sousuo)
     public void onClick() {
-        Intent intent =new Intent(getContext(), SousuoActivity.class);
+        Intent intent = new Intent(getContext(), SousuoActivity.class);
         startActivity(intent);
 
     }
@@ -251,9 +259,9 @@ public class CinemaFragment extends WDFragment {
         public void success(final List<XiangqingBase> data, Object... args) {
             Log.d("aaa", "success: " + data);
             informationAdapter.clear();
-           informationAdapter.addAll(data);
+            informationAdapter.addAll(data);
 
-           informationAdapter.notifyDataSetChanged();
+            informationAdapter.notifyDataSetChanged();
 
 
 
@@ -295,21 +303,20 @@ public class CinemaFragment extends WDFragment {
                 }
             });*/
 
-                informationAdapter.setJing(new InformationAdapter.Jing() {
+            informationAdapter.setJing(new InformationAdapter.Jing() {
 
 
+                @Override
+                public void gg(int id) {
+                    for (int i = 0; i < data.size(); i++) {
+                        ido = data.get(id).getId();
 
-                    @Override
-                    public void gg(int id) {
-                        for (int i = 0; i <data.size() ; i++) {
-                            ido = data.get(id).getId();
-
-                        }
-                        Intent intent = new Intent(getContext(), DeiserActivity.class);
-                        intent.putExtra("id", ido);
-                        startActivity(intent);
                     }
-                });
+                    Intent intent = new Intent(getContext(), DeiserActivity.class);
+                    intent.putExtra("id", ido);
+                    startActivity(intent);
+                }
+            });
 
         }
 
@@ -319,10 +326,10 @@ public class CinemaFragment extends WDFragment {
         }
     }
 
-    private class FDepart implements DataCall <List<DepartmentBean>>{
+    private class FDepart implements DataCall<List<DepartmentBean>> {
         @Override
         public void success(List<DepartmentBean> data, Object... args) {
-            GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),4);
+            GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 4);
             rvCinema.setLayoutManager(gridLayoutManager);
             DepartmentAdapter wellreceived = new DepartmentAdapter(R.layout.layout_inquiry, data);
             wellreceived.setWork(new DepartmentAdapter.Work() {
