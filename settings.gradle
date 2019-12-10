@@ -1,1 +1,2 @@
 include ':app', ':common', ':health_main', ':health_my'
+include ':app', ':common', ':health_main', ':health_guide', ':health_homepage'

@@ -22,8 +22,12 @@ public class Constant {
     public final static String ACTIVITY_URL_SET = "/main/SetActivity";
     public final static String ACTIVITY_URL_Gui = "/main/GuidanceActivity";
     public final static String ACTIVITY_URL_Home = "/main/HomeActivity";
-
-
+    public final static String ACTIVITY_URL_Drugs = "/main/DrugsActivity";
+    public final static String ACTIVITY_URL_Cine = "/main/CinemaFragment";
+    public final static String ACTIVITY_URL_Bing = "/main/Bingzhengfragment";
+    public final static String ACTIVITY_URL_Yao = "/main/Yaopinfragment";
+    public final static String ACTIVITY_URL_Com = "/main/CommonActivity";
+    public final static String ACTIVITY_URL_Don = "/main/DonActivity";
     //-----------open_main----首页模块随便动，我看提交历史删你库-----
 
 }
