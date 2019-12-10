@@ -25,6 +25,7 @@ import java.util.List;
  * @Version: 1.0
  */
 public class PopAdapter extends BaseQuickAdapter<SickBean, BaseViewHolder> {
+    List<SickBean> sickBeans ;
     public PopAdapter(int layoutResId, @Nullable List<SickBean> data) {
         super(layoutResId, data);
     }
@@ -54,6 +55,9 @@ public class PopAdapter extends BaseQuickAdapter<SickBean, BaseViewHolder> {
         this.callBack = callBack;
     }
 
+    public void clear() {
+        sickBeans.clear();
+    }
 
 
     public interface CallBack{

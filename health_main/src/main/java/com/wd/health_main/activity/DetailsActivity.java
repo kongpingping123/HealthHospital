@@ -1,6 +1,8 @@
 package com.wd.health_main.activity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -37,6 +40,8 @@ import com.wd.health_main.presenter.PublishCommentPresenter;
 
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -114,6 +119,10 @@ public class DetailsActivity extends WDActivity {
     private TextView textView;
     private RelativeLayout relativeLayout;
     private ImageView imageView;
+    private FindSickCircleCommentListPresenter findSickCircleCommentListPresenter;
+    private SharedPreferences sp;
+    private String sessionId;
+    private int id;
 
     @Override
     protected int getLayoutId() {
@@ -122,6 +131,10 @@ public class DetailsActivity extends WDActivity {
 
     @Override
     protected void initView() {
+
+        sp = getSharedPreferences("login", Context.MODE_PRIVATE);
+        sessionId = sp.getString("sessionId", "");
+        id = sp.getInt("Id", 0);
         Intent intent = getIntent();
         int sickCircleId = intent.getIntExtra("sickCircleId", 0);
         FindSickCircleInfoPresenter findSickCircleInfoPresenter = new FindSickCircleInfoPresenter(new Circle());
@@ -145,7 +158,7 @@ public class DetailsActivity extends WDActivity {
     @OnClick(R2.id.image_ping)
     public void onViewClicked() {
         showPopupWindow();
-        FindSickCircleCommentListPresenter findSickCircleCommentListPresenter = new FindSickCircleCommentListPresenter(new Sickcitcle());
+        findSickCircleCommentListPresenter = new FindSickCircleCommentListPresenter(new Sickcitcle());
         findSickCircleCommentListPresenter.reqeust(sickCircleId,1,5);
     }
 
@@ -172,9 +185,18 @@ public class DetailsActivity extends WDActivity {
             }
         });
         //点击显示隐藏
-        tv.setOnClickListener(new View.OnClickListener() {
+        textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                Timer timer = new Timer();
+                timer.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    InputMethodManager m = (InputMethodManager) editText.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                    m.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
+                    }
+                }, 300);
                 imageView.setVisibility(View.GONE);
                 textView.setVisibility(View.GONE);
                 tv.setVisibility(View.GONE);
@@ -187,8 +209,7 @@ public class DetailsActivity extends WDActivity {
             public void onClick(View v) {
                 String content = editText.getText().toString().trim();
                 //发送评论
-
-                publishCommentPresenter.reqeust("418","1575853208286418",sickCircleId1,content);
+                publishCommentPresenter.reqeust(String.valueOf(id),sessionId,sickCircleId1,content);
             }
         });
         //activity的布局
@@ -254,12 +275,11 @@ public class DetailsActivity extends WDActivity {
         @Override
         public void success(List<SickBean> data, Object... args) {
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(DetailsActivity.this);
-            linearLayoutManager.setStackFromEnd(true);//列表再底部开始展示，反转后由上面开始展示
-            linearLayoutManager.setReverseLayout(true);//列表翻转
             linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+            linearLayoutManager.setReverseLayout(true);//布局反向
+            linearLayoutManager.setStackFromEnd(true);//数据反向
             poprv.setLayoutManager(linearLayoutManager);
             wellreceived = new PopAdapter(R.layout.pop_rv_item, data);
-            wellreceived.notifyDataSetChanged();
             poprv.setAdapter(wellreceived);
             //显示底部
             poprv.scrollToPosition(wellreceived.getItemCount()-1);
@@ -286,13 +306,10 @@ public class DetailsActivity extends WDActivity {
         @Override
         public void success(Result data, Object... args) {
             if (data.getStatus().equals("0000")){
+                findSickCircleCommentListPresenter.reqeust(sickCircleId,1,5);
                 editText.setText("");
-                imageView.setVisibility(View.VISIBLE);
-                textView.setVisibility(View.VISIBLE);
-                tv.setVisibility(View.VISIBLE);
-                relativeLayout.setVisibility(View.GONE);
-                wellreceived.notifyDataSetChanged();
                 Toast.makeText(DetailsActivity.this, "评论成功", Toast.LENGTH_SHORT).show();
+                wellreceived.notifyDataSetChanged();
             }else  if (data.getStatus().equals("9999")){
                 editText.setText("");
                 imageView.setVisibility(View.VISIBLE);
