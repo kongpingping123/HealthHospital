@@ -8,6 +8,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.example.health_my.R;
 import com.example.health_my.R2;
 import com.example.health_my.presenter.SignPresenter;
@@ -16,12 +17,14 @@ import com.wd.common.bean.Result;
 import com.wd.common.core.DataCall;
 import com.wd.common.core.WDActivity;
 import com.wd.common.core.exception.ApiException;
+import com.wd.common.util.Constant;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 
+@Route(path = Constant.ACTIVITY_URL_MY_LOGIN)
 public class MyActivity extends WDActivity {
 
 

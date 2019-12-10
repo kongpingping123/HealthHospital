@@ -26,10 +26,11 @@ public class FindDepartmentAdapter extends BaseQuickAdapter<DepartmentBean, Base
     protected void convert(final BaseViewHolder helper, DepartmentBean item) {
         helper.setText(R.id.depart_tv,item.departmentName+"      ");
         final int  idd=  item.id;
+        final String name = item.departmentName;
         helper.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                work.sad(idd);
+                work.sad(idd,name);
             }
         });
 
@@ -41,6 +42,6 @@ public class FindDepartmentAdapter extends BaseQuickAdapter<DepartmentBean, Base
     }
 
     public interface Work{
-        void sad(int id);
+        void sad(int id,String name);
     }
 }
