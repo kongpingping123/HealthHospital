@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.health_my">
+
+    <application>
+        <activity android:name=".activity.CollectionActivity"></activity>
+        <activity android:name=".activity.MoneyActivity" />
+        <activity android:name=".activity.HistoryActivity" />
+        <activity android:name=".activity.ViennaActivity" />
+        <activity android:name=".activity.FileActivity" />
+        <activity android:name=".activity.ForgetsActivity" />
+        <activity android:name=".activity.ForgetActivity" />
+        <activity android:name=".activity.RegisterActivity" />
+        <activity android:name=".activity.LoginActivity" />
+        <activity android:name=".activity.MyActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            android:taskAffinity="net.sourceforge.simcpux"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+    </application>
+
+</manifest>

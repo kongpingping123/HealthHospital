@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_10"
+        android:textColor="#fff"
+        android:textSize="16sp" />
+    <fm.jiecao.jcvideoplayer_lib.JCVideoPlayer
+        android:id="@+id/trailer_movie"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_200">
+
+    </fm.jiecao.jcvideoplayer_lib.JCVideoPlayer>
+    <TextView
+        android:layout_width="@dimen/dp_48"
+        android:layout_height="@dimen/dp_24"
+        android:background="@drawable/translucent"
+        android:textColor="#fff"
+        android:textSize="12sp"
+        android:layout_alignParentRight="true"
+        android:id="@+id/text_times"
+        android:layout_marginTop="@dimen/dp_150"
+        android:layout_marginRight="@dimen/dp_20"
+        />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_30"
+        android:layout_below="@id/trailer_movie"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5"
+            android:textSize="10sp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:id="@+id/text_num"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="人已经购买"
+            android:textSize="10sp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/dp_30"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2"
+            android:textSize="10sp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/dp_70"
+            android:layout_alignParentRight="true"
+            android:id="@+id/text_time"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="分钟前"
+            android:textSize="10sp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/dp_40"
+            android:layout_alignParentRight="true"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="删除"
+            android:textSize="10sp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/dp_15"
+            android:layout_alignParentRight="true"
+            android:id="@+id/text_remover"
+            />
+
+
+    </RelativeLayout>
+
+</RelativeLayout>
