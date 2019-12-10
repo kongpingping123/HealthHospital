@@ -3,6 +3,7 @@ package com.wd.health_main.fragment;
 import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,6 +17,7 @@ import com.wd.common.core.exception.ApiException;
 import com.wd.health_main.R;
 import com.wd.health_main.R2;
 import com.wd.health_main.activity.DetailsActivity;
+import com.wd.health_main.activity.SearchActivity;
 import com.wd.health_main.adapter.CircleAdpater;
 import com.wd.health_main.adapter.FindDepartmentAdapter;
 import com.wd.health_main.presenter.FindDepartmentPresenter;
@@ -24,6 +26,7 @@ import com.wd.health_main.presenter.FindSickCircleListPresenter;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 public class FilmFragment extends WDFragment {
     @BindView(R2.id.rv_qu)
@@ -32,6 +35,10 @@ public class FilmFragment extends WDFragment {
     ImageView circleImgSearch;
     @BindView(R2.id.rv_cir)
     RecyclerView rvCir;
+    @BindView(R2.id.tv_shou)
+    TextView tvShou;
+    @BindView(R2.id.keshi)
+    TextView keshi;
     private FindSickCircleListPresenter findSickCircleListPresenter;
 
     @Override
@@ -49,10 +56,17 @@ public class FilmFragment extends WDFragment {
         FindDepartmentPresenter findDepartmentPresenter = new FindDepartmentPresenter(new Depart());
         findDepartmentPresenter.reqeust();
         findSickCircleListPresenter = new FindSickCircleListPresenter(new Sick());
-        findSickCircleListPresenter.reqeust(2,1,5);
+        findSickCircleListPresenter.reqeust(2, 1, 5);
     }
 
-    private class Depart implements DataCall <List<DepartmentBean>>{
+    @OnClick(R2.id.tv_shou)
+    public void onViewClicked() {
+        Intent intent = new Intent(getContext(), SearchActivity.class);
+        getActivity().startActivity(intent);
+    }
+
+
+    private class Depart implements DataCall<List<DepartmentBean>> {
         @Override
         public void success(List<DepartmentBean> data, Object... args) {
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
@@ -60,11 +74,12 @@ public class FilmFragment extends WDFragment {
             rvQu.setLayoutManager(linearLayoutManager);
             FindDepartmentAdapter wellreceived = new FindDepartmentAdapter(R.layout.depart_item, data);
             wellreceived.setWork(new FindDepartmentAdapter.Work() {
-               @Override
-               public void sad(int id) {
-                   findSickCircleListPresenter.reqeust(id,1,5);
-               }
-           });
+                @Override
+                public void sad(int id, String name) {
+                    keshi.setText(name);
+                    findSickCircleListPresenter.reqeust(id, 1, 5);
+                }
+            });
             rvQu.setAdapter(wellreceived);
         }
 

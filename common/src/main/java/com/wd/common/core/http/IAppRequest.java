@@ -4,6 +4,7 @@ import com.wd.common.bean.Banner;
 import com.wd.common.bean.BingBase;
 import com.wd.common.bean.CommBase;
 import com.wd.common.bean.DiseBase;
+import com.wd.common.bean.DoctorBean;
 import com.wd.common.bean.DonBase;
 import com.wd.common.bean.DrugBase;
 import com.wd.common.bean.IntBase;
@@ -12,6 +13,7 @@ import com.wd.common.bean.DepartmentBean;
 import com.wd.common.bean.DetailsBean;
 import com.wd.common.bean.PatientBean;
 import com.wd.common.bean.Result;
+import com.wd.common.bean.SearchBean;
 import com.wd.common.bean.XiangqingBase;
 import com.wd.common.bean.YaoBase;
 import com.wd.common.bean.ZixunBean;
@@ -91,4 +93,18 @@ public interface IAppRequest {
           Observable<Result<DonBase>>donfindduknedge(@Query("id") int id);
              @GET("share/knowledgeBase/v1/findDrugsKnowledge")
            Observable<Result<IntBase>>intduiokonggen(@Query("id")int id);
+    //根据关键词查询病友圈
+    @GET("user/sickCircle/v1/searchSickCircle")
+    Observable<Result<List<SearchBean>>>searchSickCircle(@Query("keyWord")String keyWord);
+    //查询问诊医生列表
+    @GET("user/inquiry/v1/findDoctorList")
+    Observable<Result<List<DoctorBean>>>findDoctorList(@Query("deptId")int deptId,
+                                                       @Query("condition")int condition,
+                                                       @Query("sortBy")int sortBy,
+                                                       @Query("page")int page,
+                                                       @Query("count")int count);
 }
+
+
+
+
