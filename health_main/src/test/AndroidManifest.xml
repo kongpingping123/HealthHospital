@@ -3,10 +3,11 @@
     package="com.wd.health_main">
 
     <application>
+        <activity android:name=".activity.SousuoActivity"/>
+        <activity android:name=".activity.DeiserActivity"/>
         <activity android:name=".activity.HomeActivity"></activity>
         <activity android:name=".activity.PatientActivity"></activity>
         <activity android:name=".activity.DetailsActivity"></activity>
-        <activity android:name=".activity.HomeActivity"/>
         <activity android:name=".activity.InsertActivity"/>
         <activity android:name=".activity.CommonActivity"></activity>
         <activity android:name=".activity.DrugsActivity" />

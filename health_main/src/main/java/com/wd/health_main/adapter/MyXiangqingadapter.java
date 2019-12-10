@@ -27,36 +27,68 @@ public class MyXiangqingadapter extends RecyclerView.Adapter<MyXiangqingadapter.
      private Context context;
     private View view;
     private Uri parse;
+    public static final int HOT_TYPE = 0;
+    public static final int FASHION_TYPE = 1;
+    private int type;
+    private View view1;
+     private int count;
 
-    public MyXiangqingadapter( Context context) {
+    public MyXiangqingadapter( Context context,int type) {
         list = new ArrayList<>();
         this.context = context;
+        this.type = type;
     }
      public void AddAll(List<XiangqingBase> xiangqingBases){
          if (xiangqingBases!=null){
              list.addAll(xiangqingBases);
          }
+
+
+
      }
+
+
+
     @NonNull
     @Override
     public MyXiangqingadapter.myViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        view = LayoutInflater.from(context).inflate(R.layout.xiangqing_layout,parent,false);
-        return new myViewHolder(view);
+        if (type == HOT_TYPE){
+
+            view = LayoutInflater.from(context).inflate(R.layout.xiangqing_layout,parent,false);
+            return new myViewHolder(view);
+        }else {
+            view1 = LayoutInflater.from(context).inflate(R.layout.hot_item_layout,parent,false);
+            return new myViewHolder(view1);
+        }
+
+
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyXiangqingadapter.myViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyXiangqingadapter.myViewHolder holder, final int position) {
 
-                  parse = Uri.parse(list.get(position).thumbnail);
+        parse = Uri.parse(list.get(position).thumbnail);
             holder.simpleDraweeView.setImageURI(parse);
         holder.textView.setText(list.get(position).title);
        holder.textView3.setText(list.get(position).source);
 
+       /* holder.image.setImageURI(parse);
+
+       holder.price.setText(list.get(position).thumbnail);*/
+///        holder.text.setText(list.get(position).thumbnail);
         try {
             holder.textView4.setText(DateUtils.dateFormat(new Date(list.get(position).releaseTime),DateUtils.MINUTE_PATTERN));
         } catch (ParseException e) {
             e.printStackTrace();
         }
+       /* holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                  jing.gg(position);
+
+            }
+        });*/
+
     }
 
     @Override
@@ -74,7 +106,9 @@ public class MyXiangqingadapter extends RecyclerView.Adapter<MyXiangqingadapter.
         private final SimpleDraweeView simpleDraweeView;
         private final TextView textView3;
         private final TextView textView4;
-
+        SimpleDraweeView image;
+        TextView text;
+        TextView price;
 
         public myViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -82,8 +116,25 @@ public class MyXiangqingadapter extends RecyclerView.Adapter<MyXiangqingadapter.
             simpleDraweeView = itemView.findViewById(R.id.imager2);
             textView3 = itemView.findViewById(R.id.text_view3);
             textView4 = itemView.findViewById(R.id.text_view4);
+            image = itemView.findViewById(R.id.image);
+            text = itemView.findViewById(R.id.text);
+            price = itemView.findViewById(R.id.price);
+
+
         }
+
     }
+
+   /* public Jing jing;
+
+    public void setJing(Jing jing) {
+        this.jing = jing;
+    }
+
+    public interface  Jing{
+        void gg(int id);
+    }
+*/
 
 
 }

@@ -1,10 +1,12 @@
 package com.wd.health_main.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,6 +21,9 @@ import com.wd.common.core.exception.ApiException;
 import com.wd.common.util.Constant;
 import com.wd.health_main.R;
 import com.wd.health_main.R2;
+import com.wd.health_main.activity.DeiserActivity;
+import com.wd.health_main.activity.SousuoActivity;
+import com.wd.health_main.adapter.InformationAdapter;
 import com.wd.health_main.adapter.MyXiangqingadapter;
 import com.wd.health_main.adapter.MyZixunadapter;
 import com.wd.health_main.presenter.BannerPresenter;
@@ -34,6 +39,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
+import butterknife.OnClick;
 
 @Route(path = Constant.ACTIVITY_URL_Cine)
 public class CinemaFragment extends WDFragment {
@@ -68,16 +74,20 @@ public class CinemaFragment extends WDFragment {
     RecyclerView recyView;
     @BindView(R2.id.recy_view1)
     RecyclerView recyView1;
-
-
+    @BindView(R2.id.sousuo)
+    EditText sousuo;
+    private int id1;
+    private int int2;
+    private int ido;
     private BannerPresenter bannerPresenter;
     private ZixunPresenter zixunPresenter;
     private LinearLayoutManager linearLayoutManager;
     private MyZixunadapter myZixunadapter;
     private GridLayoutManager gridLayoutManager;
     private XiangqingPresenter xiangqingPresenter;
-    private LinearLayoutManager linearLayoutManager1;
+
     private MyXiangqingadapter myXiangqingadapter;
+    private InformationAdapter informationAdapter;
 
 
     @Override
@@ -101,7 +111,7 @@ public class CinemaFragment extends WDFragment {
 
         //健康详情
         xiangqingPresenter = new XiangqingPresenter(new jiankang());
-        xiangqingPresenter.reqeust(1,1,5);
+        xiangqingPresenter.reqeust(1, 1, 5);
         //健康咨询
         zixunPresenter = new ZixunPresenter(new jiankangzixun());
         zixunPresenter.reqeust();
@@ -113,25 +123,38 @@ public class CinemaFragment extends WDFragment {
         myZixunadapter.setOnActu(new MyZixunadapter.OnActu() {
             @Override
             public void onActi(int Id) {
-                xiangqingPresenter.reqeust(Id,1,5);
+                xiangqingPresenter.reqeust(Id, 1, 5);
             }
         });
 
 
         //健康详情
 
-        linearLayoutManager1 = new LinearLayoutManager(getContext());
-        myXiangqingadapter = new MyXiangqingadapter(getContext());
-       recyView1.setLayoutManager(linearLayoutManager1);
-       recyView1.setAdapter(myXiangqingadapter);
+           LinearLayoutManager linearLayoutManager =  new LinearLayoutManager(getContext());
+
+           linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
+           recyView1.setLayoutManager(linearLayoutManager);
 
 
-     //常见病症
+        informationAdapter = new InformationAdapter(getContext());
+           recyView1.setAdapter(informationAdapter);
+        /*linearLayoutManager1 = new LinearLayoutManager(getContext());
+        myXiangqingadapter = new MyXiangqingadapter(getContext(), MyXiangqingadapter.HOT_TYPE);*/
+        // myXiangqingadapter = new MyXiangqingadapter(getContext(),MyXiangqingadapter.FASHION_TYPE);
+
+/*
+
+        recyView1.setLayoutManager(linearLayoutManager1);
+        recyView1.setAdapter(myXiangqingadapter);
+*/
+
+
+        //常见病症
 
         showDrugs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            intentByRouter(Constant.ACTIVITY_URL_Drugs);
+                intentByRouter(Constant.ACTIVITY_URL_Drugs);
 
             }
         });
@@ -147,6 +170,13 @@ public class CinemaFragment extends WDFragment {
     @Override
     public void onResume() {
         super.onResume();
+
+    }
+
+    @OnClick(R2.id.sousuo)
+    public void onClick() {
+        Intent intent =new Intent(getContext(), SousuoActivity.class);
+        startActivity(intent);
 
     }
 
@@ -216,11 +246,65 @@ public class CinemaFragment extends WDFragment {
     class jiankang implements DataCall<List<XiangqingBase>> {
 
         @Override
-        public void success(List<XiangqingBase> data, Object... args) {
+        public void success(final List<XiangqingBase> data, Object... args) {
             Log.d("aaa", "success: " + data);
-            myXiangqingadapter.clear();
-             myXiangqingadapter.AddAll(data);
-             myXiangqingadapter.notifyDataSetChanged();
+            informationAdapter.clear();
+           informationAdapter.addAll(data);
+
+           informationAdapter.notifyDataSetChanged();
+
+
+
+       /*    informationAdapter.setOnItemClickListener(new InformationAdapter.OnItemClickListener() {
+
+
+
+                 @Override
+                 public void onClick(int position) {
+                     for (int i = 0; i < data.size(); i++) {
+                         int2 = data.get(position).getId();
+
+                     }
+                     Intent intent = new Intent(getContext(), DeiserActivity.class);
+                     intent.putExtra("id", int2);
+                     startActivity(intent);
+                 }
+             });*/
+
+           /* myXiangqingadapter.clear();
+            myXiangqingadapter.AddAll(data);
+            myXiangqingadapter.notifyDataSetChanged();
+
+            myXiangqingadapter.setJing(new MyXiangqingadapter.Jing() {
+
+
+                @Override
+                public void gg(int id) {
+                    for (int i = 0; i < data.size(); i++) {
+                        id1 = data.get(id).getId();
+                    }
+                    Intent intent = new Intent(getContext(), DeiserActivity.class);
+                    intent.putExtra("id", id1);
+                    startActivity(intent);
+
+                }
+            });*/
+
+                informationAdapter.setJing(new InformationAdapter.Jing() {
+
+
+
+                    @Override
+                    public void gg(int id) {
+                        for (int i = 0; i <data.size() ; i++) {
+                            ido = data.get(id).getId();
+
+                        }
+                        Intent intent = new Intent(getContext(), DeiserActivity.class);
+                        intent.putExtra("id", ido);
+                        startActivity(intent);
+                    }
+                });
 
         }
 
