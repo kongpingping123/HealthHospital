@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_marginTop="@dimen/dp_20"
+        android:layout_marginLeft="@dimen/dp_24"
+
+        android:layout_width="@dimen/dp_312"
+        android:layout_height="@dimen/dp_121">
+        <ImageView
+            android:id="@+id/si1"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_width="@dimen/dp_84"
+            android:layout_height="@dimen/dp_101" />
+        <TextView
+            android:textSize="@dimen/sp_14"
+            android:textColor="#ffffff"
+            android:id="@+id/st1"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginLeft="@dimen/dp_114"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_20" />
+        <TextView
+            android:textColor="#ffffff"
+            android:textSize="@dimen/sp_12"
+            android:id="@+id/st2"
+            android:layout_marginTop="@dimen/dp_40"
+            android:layout_marginLeft="@dimen/dp_114"
+            android:layout_width="@dimen/dp_84"
+            android:layout_height="@dimen/dp_17" />
+        <TextView
+            android:textColor="#ffffff"
+            android:textSize="@dimen/sp_12"
+            android:id="@+id/st3"
+            android:layout_marginTop="@dimen/dp_67"
+            android:layout_marginLeft="@dimen/dp_114"
+            android:layout_width="@dimen/dp_148"
+            android:layout_height="@dimen/dp_17" />
+        <TextView
+            android:textColor="#ffffff"
+            android:textSize="@dimen/sp_12"
+            android:id="@+id/st4"
+            android:layout_marginTop="@dimen/dp_94"
+            android:layout_marginLeft="@dimen/dp_114"
+            android:layout_width="@dimen/dp_66"
+            android:layout_height="@dimen/dp_17" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

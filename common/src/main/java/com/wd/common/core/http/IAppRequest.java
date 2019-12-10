@@ -6,12 +6,14 @@ import com.wd.common.bean.CommBase;
 import com.wd.common.bean.DiseBase;
 import com.wd.common.bean.DonBase;
 import com.wd.common.bean.DrugBase;
+import com.wd.common.bean.DtonBase;
 import com.wd.common.bean.IntBase;
 import com.wd.common.bean.CircleBean;
 import com.wd.common.bean.DepartmentBean;
 import com.wd.common.bean.DetailsBean;
 import com.wd.common.bean.PatientBean;
 import com.wd.common.bean.Result;
+import com.wd.common.bean.SousuoBase;
 import com.wd.common.bean.XiangqingBase;
 import com.wd.common.bean.YaoBase;
 import com.wd.common.bean.ZixunBean;
@@ -91,4 +93,10 @@ public interface IAppRequest {
           Observable<Result<DonBase>>donfindduknedge(@Query("id") int id);
              @GET("share/knowledgeBase/v1/findDrugsKnowledge")
            Observable<Result<IntBase>>intduiokonggen(@Query("id")int id);
+
+             @GET("share/information/v1/findInformation")
+           Observable<Result<DtonBase>>deisebase(@Query("infoId")int infoId);
+
+             @GET("share/v1/homePageSearch")
+            Observable<Result<List<SousuoBase>>>sousuohomepage(@Query("keyWord")String keyWord);
 }
