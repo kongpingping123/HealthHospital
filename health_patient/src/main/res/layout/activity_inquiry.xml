@@ -236,8 +236,9 @@
                 android:id="@+id/rv_doctor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dp_25"
-                android:layout_marginRight="@dimen/dp_25"></androidx.recyclerview.widget.RecyclerView>
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/dp_26"
+                android:layout_marginRight="@dimen/dp_26"></androidx.recyclerview.widget.RecyclerView>
 
 
         </RelativeLayout>
