@@ -60,22 +60,6 @@ public class CinemaFragment extends WDFragment {
     TextView changyoubingqing;
     @BindView(R2.id.show_drugs)
     ImageView showDrugs;
-    @BindView(R2.id.show_inner)
-    ImageView showInner;
-    @BindView(R2.id.show_eye)
-    ImageView showEye;
-    @BindView(R2.id.show_bone)
-    ImageView showBone;
-    @BindView(R2.id.show_little)
-    ImageView showLittle;
-    @BindView(R2.id.show_pass)
-    ImageView showPass;
-    @BindView(R2.id.show_skin)
-    ImageView showSkin;
-    @BindView(R2.id.show_ear)
-    ImageView showEar;
-    @BindView(R2.id.show_spirit)
-    ImageView showSpirit;
     @BindView(R2.id.show_image)
     ImageView showImage;
     @BindView(R2.id.recy_view)
@@ -161,9 +145,9 @@ public class CinemaFragment extends WDFragment {
         recyView1.setLayoutManager(linearLayoutManager1);
         recyView1.setAdapter(myXiangqingadapter);
 */
-        linearLayoutManager1 = new LinearLayoutManager(getContext());
-        myXiangqingadapter = new MyXiangqingadapter(getContext());
-        recyView1.setLayoutManager(linearLayoutManager1);
+//        linearLayoutManager1 = new LinearLayoutManager(getContext());
+//        myXiangqingadapter = new MyXiangqingadapter(getContext());
+//        recyView1.setLayoutManager(linearLayoutManager1);
         recyView1.setAdapter(myXiangqingadapter);
 
 
