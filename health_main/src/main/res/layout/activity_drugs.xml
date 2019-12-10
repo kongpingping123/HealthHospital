@@ -47,6 +47,7 @@
               android:layout_weight="1"
               android:text="常见病症"
                android:button="@null"
+
               android:id="@+id/ra01"
                android:textSize="@dimen/sp_16"
                android:gravity="center"
@@ -56,6 +57,7 @@
               android:layout_height="match_parent"
               android:layout_weight="1"
               android:text="常用药品"
+
               android:button="@null"
               android:id="@+id/ra02"
               android:textSize="@dimen/sp_16"

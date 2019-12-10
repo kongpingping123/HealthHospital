@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
       android:orientation="vertical"
+    android:background="#fff"
     android:layout_height="match_parent"
     tools:context=".activity.GuidanceActivity">
 
@@ -18,19 +19,50 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/dp_70"
+        android:layout_marginLeft="@dimen/dp_40"
         android:gravity="center">
 
 
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rb11"
+
+            android:checked="true"
+            />
+            <RadioButton
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/rb12"
+                />
+         <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+             android:id="@+id/rb13"
+            />
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rb14"
+            />
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rb15"
+            />
     </RadioGroup>
 
     <Button
         android:id="@+id/button1"
-        android:layout_width="40dp"
+        android:layout_width="120dp"
         android:layout_height="40dp"
         android:layout_above="@+id/radioGroup1"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="160dp"
-        android:visibility="gone"
+        android:layout_marginBottom="@dimen/dp_35"
+         android:text="马上进入"
+        android:textSize="@dimen/sp_17"
          android:background="#2196F3"
         android:textColor="#fff"
         />

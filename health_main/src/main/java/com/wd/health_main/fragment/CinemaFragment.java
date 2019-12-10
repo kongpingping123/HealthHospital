@@ -26,6 +26,7 @@ import com.wd.health_main.activity.SousuoActivity;
 import com.wd.health_main.adapter.InformationAdapter;
 import com.wd.health_main.adapter.MyXiangqingadapter;
 import com.wd.health_main.adapter.MyZixunadapter;
+import com.wd.health_main.fragment.yaopinfragment.Yaopinfragment;
 import com.wd.health_main.presenter.BannerPresenter;
 import com.wd.health_main.presenter.XiangqingPresenter;
 import com.wd.health_main.presenter.ZixunPresenter;
@@ -140,7 +141,7 @@ public class CinemaFragment extends WDFragment {
            recyView1.setAdapter(informationAdapter);
         /*linearLayoutManager1 = new LinearLayoutManager(getContext());
         myXiangqingadapter = new MyXiangqingadapter(getContext(), MyXiangqingadapter.HOT_TYPE);*/
-        // myXiangqingadapter = new MyXiangqingadapter(getContext(),MyXiangqingadapter.FASHION_TYPE);
+       // myXiangqingadapter = new MyXiangqingadapter(getContext(),MyXiangqingadapter.FASHION_TYPE);
 
 /*
 
@@ -163,6 +164,10 @@ public class CinemaFragment extends WDFragment {
             @Override
             public void onClick(View v) {
                 intentByRouter(Constant.ACTIVITY_URL_Drugs);
+
+                 /* Intent intent = new Intent(getContext(), Yaopinfragment.class);
+                  startActivity(intent);*/
+
             }
         });
     }

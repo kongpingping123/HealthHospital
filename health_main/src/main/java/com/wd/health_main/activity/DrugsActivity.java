@@ -43,17 +43,23 @@ public class DrugsActivity extends WDActivity {
         myPageradapter = new MyPageradapter(getSupportFragmentManager(),list);
         viewPager1.setAdapter(myPageradapter);
 
+
           radioGroup1.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+
               @Override
               public void onCheckedChanged(RadioGroup group, int checkedId) {
                   radioGroup1.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
                       @Override
                       public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+
                           if (checkedId == R.id.ra01) {
                               viewPager1.setCurrentItem(0);
+
                           }else {
                               if (checkedId == R.id.ra02) {
-                                  viewPager1.setCurrentItem(1);
+                              viewPager1.setCurrentItem(1);
+
                               }
                           }
                       }

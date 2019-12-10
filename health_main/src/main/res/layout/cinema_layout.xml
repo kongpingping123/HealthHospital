@@ -432,7 +432,7 @@
               </RelativeLayout>
        </androidx.core.widget.NestedScrollView>
        <RelativeLayout
-           android:background="#F5F2F2"
+           android:background="@android:color/transparent"
            android:layout_width="match_parent"
            android:layout_height="@dimen/dp_50">
               <ImageView

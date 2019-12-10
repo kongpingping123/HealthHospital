@@ -62,7 +62,7 @@ public class MyZixunadapter extends RecyclerView.Adapter<MyZixunadapter.myViewHo
             holder.textView.setTextColor(Color.parseColor("#03A9F4"));
 
         }else {
-            holder.lin_lin.setBackgroundColor(Color.parseColor("#f2f2f2"));
+            //holder.lin_lin.setBackgroundColor(Color.parseColor("#f2f2f2"));
             holder.bing_zheng_view.setVisibility(View.GONE);
             holder.textView.setTextColor(Color.parseColor("#333333"));
 
