@@ -148,7 +148,7 @@ public class CinemaFragment extends WDFragment {
 //        linearLayoutManager1 = new LinearLayoutManager(getContext());
 //        myXiangqingadapter = new MyXiangqingadapter(getContext());
 //        recyView1.setLayoutManager(linearLayoutManager1);
-        recyView1.setAdapter(myXiangqingadapter);
+//        recyView1.setAdapter(myXiangqingadapter);
 
 
         //常见病症
