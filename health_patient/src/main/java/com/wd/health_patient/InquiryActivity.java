@@ -1,5 +1,6 @@
 package com.wd.health_patient;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -67,6 +68,8 @@ public class InquiryActivity extends WDActivity {
     RecyclerView rvDoctor;
     private FindDoctorListPresenter findDoctorListPresenter;
     private int idddd;
+    private InquiryAdapter inquiryAdapter;
+
     @Override
     protected int getLayoutId() {
         return R.layout.activity_inquiry;
@@ -146,7 +149,21 @@ public class InquiryActivity extends WDActivity {
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(InquiryActivity.this);
             linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
             rvDoctor.setLayoutManager(linearLayoutManager);
-            InquiryAdapter inquiryAdapter = new InquiryAdapter(R.layout.inquiry_item, result);
+            inquiryAdapter = new InquiryAdapter(R.layout.inquiry_item, result);
+            inquiryAdapter.setDoctor(new InquiryAdapter.Doctor() {
+                @Override
+                public void sad(Uri image, String name, int myposition,String inauguralHospital,String jobTitle,String praise,int serverNum,int servicePrice) {
+                    sdvPic.setImageURI(image) ;
+                    tvName.setText(name);
+                    inquiryAdapter.getIndex(myposition);
+                    inquiryAdapter.notifyDataSetChanged();
+                    tvInauguralHospital.setText(inauguralHospital);
+                    tvJobTitle.setText(jobTitle);
+                    tvPraiseNum.setText("好评率   " + praise);
+                    tvServerNum.setText("服务患者数   " + serverNum);
+                    tvServicePrice.setText(servicePrice + "H币/次");
+                }
+            });
             rvDoctor.setAdapter(inquiryAdapter);
         }
 
