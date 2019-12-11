@@ -3,7 +3,6 @@
     package="com.wd.health_main">
 
     <application>
-        <activity android:name=".activity.WardmateActivity"></activity>
         <activity android:name=".activity.SousuoActivity" />
         <activity android:name=".activity.DeiserActivity" />
         <activity android:name=".activity.PatientActivity" />

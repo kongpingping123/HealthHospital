@@ -12,6 +12,7 @@ public class Constant {
     public final static String ACTIVITY_URL_WELCOME = "/login/WelcomeActivity";
     public final static String ACTIVITY_URL_INQUIRY = "/patient/InquiryActivity";
     public final static String ACTIVITY_URL_MY_LOGIN ="/my/MyActivity";
+    public final static String ACTIVITY_URL_WRITE = "/write/PublishActivity";
 
     //-----------open_login----都不要动我的开放登录变量，谁动谁傻叉-----
 
