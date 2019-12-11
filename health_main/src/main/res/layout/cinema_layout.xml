@@ -17,6 +17,7 @@
                      <LinearLayout
                          android:layout_width="match_parent"
                          android:layout_height="match_parent"
+
                          android:orientation="vertical">
 
                             <com.zhouwei.mzbanner.MZBannerView
@@ -261,6 +262,17 @@
                                 android:layout_height="match_parent"
                                 android:id="@+id/recy_view1"
                                 ></androidx.recyclerview.widget.RecyclerView>
+
+                              <TextView
+                                  android:layout_width="wrap_content"
+                                  android:layout_height="wrap_content"
+                                   android:text="查看更多 >>"
+                                   android:textSize="@dimen/sp_13"
+                                   android:id="@+id/gengduo"
+                                    android:layout_marginLeft="@dimen/dp_270"
+                                  android:layout_marginBottom="@dimen/dp_12"
+                                   android:textColor="#03A9F4"
+                                  />
                      </LinearLayout>
 
 

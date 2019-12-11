@@ -46,12 +46,6 @@ public class SousuoActivity extends WDActivity {
 
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
 
     @OnClick({R2.id.back, R2.id.search})
     public void onClick(View view) {

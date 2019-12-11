@@ -109,6 +109,16 @@ public class InformationAdapter extends RecyclerView.Adapter {
                 }
             });*/
 
+            
+                  imgNullViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                      @Override
+                      public void onClick(View v) {
+                            jing.gg(i);
+                      }
+                  });
+
+
+
         } else if (viewType == 2) {
 
             ImgThreeViewHolder imgThreeViewHolder = (ImgThreeViewHolder) viewHolder;
@@ -125,7 +135,12 @@ public class InformationAdapter extends RecyclerView.Adapter {
             Uri uri2 = Uri.parse(split[2]);
             imgThreeViewHolder.information_img_three_img3.setImageURI(uri2);
 
-
+                 imgThreeViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                     @Override
+                     public void onClick(View v) {
+                                jing.gg(i);
+                     }
+                 });
           /*  imgThreeViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -143,6 +158,7 @@ public class InformationAdapter extends RecyclerView.Adapter {
 
             Uri uri = Uri.parse(split[0]);
             imgOneViewHolder.information_img_one_img.setImageURI(uri);
+
 
            /* imgOneViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

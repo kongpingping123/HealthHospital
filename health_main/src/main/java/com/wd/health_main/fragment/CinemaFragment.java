@@ -3,17 +3,12 @@ package com.wd.health_main.fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -28,12 +23,12 @@ import com.wd.common.util.Constant;
 import com.wd.health_main.R;
 import com.wd.health_main.R2;
 import com.wd.health_main.activity.DeiserActivity;
+import com.wd.health_main.activity.GengduoActivity;
 import com.wd.health_main.activity.SousuoActivity;
 import com.wd.health_main.adapter.DepartmentAdapter;
 import com.wd.health_main.adapter.InformationAdapter;
 import com.wd.health_main.adapter.MyXiangqingadapter;
 import com.wd.health_main.adapter.MyZixunadapter;
-import com.wd.health_main.fragment.yaopinfragment.Yaopinfragment;
 import com.wd.health_main.presenter.BannerPresenter;
 import com.wd.health_main.presenter.FindDepartmentPresenter;
 import com.wd.health_main.presenter.XiangqingPresenter;
@@ -44,6 +39,9 @@ import com.zhouwei.mzbanner.holder.MZViewHolder;
 
 import java.util.List;
 
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -72,6 +70,8 @@ public class CinemaFragment extends WDFragment {
     EditText sousuo;
     @BindView(R2.id.text_login)
     ImageView textLogin;
+    @BindView(R2.id.gengduo)
+    TextView gengduo;
     private int id1;
     private int int2;
     private int ido;
@@ -106,7 +106,14 @@ public class CinemaFragment extends WDFragment {
             }
         });
 
+         gengduo.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 Intent intent = new Intent(getContext(), GengduoActivity.class);
+                 startActivity(intent);
 
+             }
+         });
         //问诊
         FindDepartmentPresenter findDepartmentPresenter = new FindDepartmentPresenter(new FDepart());
         findDepartmentPresenter.reqeust();
@@ -147,7 +154,7 @@ public class CinemaFragment extends WDFragment {
         recyView1.setAdapter(informationAdapter);
         /*linearLayoutManager1 = new LinearLayoutManager(getContext());
         myXiangqingadapter = new MyXiangqingadapter(getContext(), MyXiangqingadapter.HOT_TYPE);*/
-       // myXiangqingadapter = new MyXiangqingadapter(getContext(),MyXiangqingadapter.FASHION_TYPE);
+        // myXiangqingadapter = new MyXiangqingadapter(getContext(),MyXiangqingadapter.FASHION_TYPE);
 
 /*
 
@@ -194,6 +201,8 @@ public class CinemaFragment extends WDFragment {
         startActivity(intent);
 
     }
+
+
 
 
     class BannerViewHolder implements MZViewHolder<Banner> {

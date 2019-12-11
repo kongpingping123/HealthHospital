@@ -56,6 +56,7 @@ public class Mybingadapter extends RecyclerView.Adapter<Mybingadapter.myViewHold
                    jing.gg(position,list.get(position).name);
 
 
+
                }
            });
 

@@ -16,6 +16,7 @@
         android:layout_height="wrap_content"
         android:src="@drawable/common_icon_back_white_n"
         android:layout_marginTop="@dimen/dp_20"
+        android:id="@+id/jian"
         android:layout_marginLeft="@dimen/dp_20"
         />
 

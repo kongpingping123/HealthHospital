@@ -76,7 +76,7 @@ public class CommonActivity extends WDActivity {
             adssad.setText(data.pathology);
             a2.setText(data.chineseMedicineTreatment);
             a3.setText(data.benefitTaboo);
-            a4.setText(data.diseaseCategoryId);
+            a4.setText(data.diseaseCategoryId+"");
          //   a5.setText(data.id);
 
 
