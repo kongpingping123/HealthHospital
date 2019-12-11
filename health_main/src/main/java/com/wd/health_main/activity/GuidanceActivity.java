@@ -52,9 +52,9 @@ public class GuidanceActivity extends WDActivity {
        // button.setOnClickListener(this);
         button.setVisibility(View.GONE);
         radioGroup = findViewById(R.id.radioGroup1);
-        int arr [] = {R.drawable.yindao1,R.drawable.yindao2,R.drawable.yindao3,R.drawable.yindao4,R.drawable.yindao5,};
+        int arr [] = {R.drawable.guide_pages_one,R.drawable.guide_pages_two,R.drawable.guide_pages_three,R.drawable.guide_pages_four,R.drawable.guide_pages_five,};
         final ArrayList<ImageView> list = new ArrayList<ImageView>();
-        RadioGroup.LayoutParams params =  new RadioGroup.LayoutParams(WindowManager.LayoutParams.WRAP_CONTENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        final RadioGroup.LayoutParams params =  new RadioGroup.LayoutParams(WindowManager.LayoutParams.WRAP_CONTENT, WindowManager.LayoutParams.WRAP_CONTENT);
         params.leftMargin = 10;
         for (int i = 0; i < arr.length; i++) {
             ImageView imageView = new ImageView(GuidanceActivity.this);
@@ -119,6 +119,31 @@ public class GuidanceActivity extends WDActivity {
                 //  button.setVisibility(View.VISIBLE);
             }
         });
+          radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+              @Override
+              public void onCheckedChanged(RadioGroup group, int checkedId) {
+                  if (checkedId == R.id.rb11) {
+                        pager.setCurrentItem(0);
+
+                  }else {
+                      if (checkedId==R.id.rb12){
+                          pager.setCurrentItem(1);
+                      }else {
+                          if (checkedId==R.id.rb13){
+                              pager.setCurrentItem(2);
+                          }else {
+                              if (checkedId==R.id.rb14){
+                                  pager.setCurrentItem(3);
+                              }else {
+                                  if (checkedId==R.id.rb15){
+                                      pager.setCurrentItem(4);
+                                  }
+                              }
+                          }
+                      }
+                  }
+              }
+          });
 
     }
 

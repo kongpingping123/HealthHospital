@@ -160,7 +160,7 @@ public class HomeActivity extends WDActivity {
                     .commit();
 
         } else if (id == R.id.comments_img) {
-                intent(WardmateActivity.class);
+            intentByRouter(Constant.ACTIVITY_URL_WRITE);
         }
     }
 

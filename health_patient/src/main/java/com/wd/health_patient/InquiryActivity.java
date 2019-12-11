@@ -18,6 +18,7 @@ import com.wd.common.core.exception.ApiException;
 import com.wd.common.util.Constant;
 import com.wd.health_main.adapter.FindDepartmentAdapter;
 import com.wd.health_main.presenter.FindDepartmentPresenter;
+import com.wd.health_patient.adapter.InquiryAdapter;
 import com.wd.health_patient.presenter.FindDoctorListPresenter;
 
 import java.util.List;
@@ -113,10 +114,12 @@ public class InquiryActivity extends WDActivity {
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
             linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
             inquiryRv.setLayoutManager(linearLayoutManager);
-            FindDepartmentAdapter wellreceived = new FindDepartmentAdapter(com.wd.health_main.R.layout.depart_item, data);
+            final FindDepartmentAdapter wellreceived = new FindDepartmentAdapter(com.wd.health_main.R.layout.depart_item, data);
             wellreceived.setWork(new FindDepartmentAdapter.Work() {
                 @Override
-                public void sad(int id, String name) {
+                public void sad(int id, String name,int myposition) {
+                    wellreceived.getIndex(myposition);
+                    wellreceived.notifyDataSetChanged();
                     idddd = id;
                     findDoctorListPresenter.reqeust(idddd, 4, 1, 1, 5);
                 }
@@ -140,6 +143,11 @@ public class InquiryActivity extends WDActivity {
             tvPraiseNum.setText("好评率   " + result.get(0).praise);
             tvServerNum.setText("服务患者数   " + result.get(0).serverNum);
             tvServicePrice.setText(result.get(0).servicePrice + "H币/次");
+            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(InquiryActivity.this);
+            linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+            rvDoctor.setLayoutManager(linearLayoutManager);
+            InquiryAdapter inquiryAdapter = new InquiryAdapter(R.layout.inquiry_item, result);
+            rvDoctor.setAdapter(inquiryAdapter);
         }
 
         @Override
