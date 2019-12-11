@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.widget.RadioGroup;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.google.android.material.tabs.TabLayout;
 import com.wd.common.core.WDActivity;
 import com.wd.common.util.Constant;
 import com.wd.health_main.R;
@@ -14,7 +15,9 @@ import com.wd.health_main.fragment.yaopinfragment.Yaopinfragment;
 
 import java.util.ArrayList;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -23,11 +26,13 @@ import butterknife.ButterKnife;
 public class DrugsActivity extends WDActivity {
 
 
-    @BindView(R2.id.radio_group1)
-    RadioGroup radioGroup1;
+
     @BindView(R2.id.view_pager1)
     ViewPager viewPager1;
-        private ArrayList<Fragment> list = new ArrayList<>();
+    @BindView(R2.id.table)
+    TabLayout table;
+    private ArrayList<Fragment> list = new ArrayList<>();
+    private ArrayList<String> listtab = new ArrayList<>();
     private MyPageradapter myPageradapter;
 
     @Override
@@ -37,35 +42,34 @@ public class DrugsActivity extends WDActivity {
 
     @Override
     protected void initView() {
-           list.add(new Bingzhengfragment());
+        list.add(new Bingzhengfragment());
         list.add(new Yaopinfragment());
 
-        myPageradapter = new MyPageradapter(getSupportFragmentManager(),list);
-        viewPager1.setAdapter(myPageradapter);
+               listtab.add("常见病症");
+                listtab.add("常用药品");
 
 
-          radioGroup1.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+                viewPager1.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
+                    @Override
+                    public Fragment getItem(int position) {
 
-              @Override
-              public void onCheckedChanged(RadioGroup group, int checkedId) {
-                  radioGroup1.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-                      @Override
-                      public void onCheckedChanged(RadioGroup group, int checkedId) {
+                        return list.get(position);
+                    }
+
+                    @Override
+                    public int getCount() {
+                        return list.size();
+                    }
+
+                    @Nullable
+                    @Override
+                    public CharSequence getPageTitle(int position) {
+                        return listtab.get(position);
+                    }
+                });
+                table.setupWithViewPager(viewPager1);
 
 
-                          if (checkedId == R.id.ra01) {
-                              viewPager1.setCurrentItem(0);
-
-                          }else {
-                              if (checkedId == R.id.ra02) {
-                              viewPager1.setCurrentItem(1);
-
-                              }
-                          }
-                      }
-                  });
-              }
-          });
     }
 
     @Override

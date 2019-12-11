@@ -2,7 +2,9 @@ package com.wd.health_main.activity;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
 import android.util.Log;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.ImageView;
 
@@ -15,6 +17,7 @@ import com.wd.health_main.R2;
 import com.wd.health_main.presenter.DisePresenter;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class DeiserActivity extends WDActivity {
@@ -29,9 +32,11 @@ public class DeiserActivity extends WDActivity {
     TextView jing3;*/
     @BindView(R2.id.imager3)
     ImageView imager3;
-
+    @BindView(R2.id.webview)
+    WebView webview;
     private DisePresenter disePresenter;
     private int id;
+    private WebSettings settings;
 
     @Override
     protected int getLayoutId() {
@@ -46,11 +51,22 @@ public class DeiserActivity extends WDActivity {
         id = intent.getIntExtra("id", 0);
         disePresenter.reqeust(id);
 
-       WebView wv =  findViewById(R.id.webview);
 
 
 
 
+        webview.loadUrl("http://172.17.8.100/health/share/information/v1/findInformation?infoId=1 ");
+
+         
+    }
+
+    private String getUnicodeContent() {
+
+        String content = getUnicodeContent() ;
+        settings = webview.getSettings();
+        webview.getSettings().setDefaultTextEncodingName("UTF-8");
+        webview.loadData(content,"text/html","UTF-8");
+        return content;
     }
 
 
@@ -60,13 +76,13 @@ public class DeiserActivity extends WDActivity {
     }
 
 
-
-
     @OnClick(R2.id.imager3)
     public void onClick() {
         finish();
 
     }
+
+
 
 
 
@@ -80,6 +96,9 @@ public class DeiserActivity extends WDActivity {
 
             Log.d("aaa", "success: " + data);
 
+            //webview.loadUrl();
+
+
 
 
 
@@ -90,7 +109,6 @@ public class DeiserActivity extends WDActivity {
             jing3.setText(data.whetherCollection);*/
 
         }
-
 
 
         @Override

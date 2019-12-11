@@ -34,48 +34,39 @@
         android:layout_height="@dimen/sp_6"
         android:background="#A09797"
         />
-    <RadioGroup
-          android:layout_width="match_parent"
-          android:layout_height="@dimen/dp_36"
-          android:id="@+id/radio_group1"
-          android:background="#fff"
-          android:orientation="horizontal"
-          >
-          <RadioButton
-              android:layout_width="0dp"
-              android:layout_height="match_parent"
-              android:layout_weight="1"
-              android:text="常见病症"
-               android:button="@null"
 
-              android:id="@+id/ra01"
-               android:textSize="@dimen/sp_16"
-               android:gravity="center"
-              />
-          <RadioButton
-              android:layout_width="0dp"
-              android:layout_height="match_parent"
-              android:layout_weight="1"
-              android:text="常用药品"
 
-              android:button="@null"
-              android:id="@+id/ra02"
-              android:textSize="@dimen/sp_16"
-              android:gravity="center"
-              />
 
-      </RadioGroup>
+          <com.google.android.material.tabs.TabLayout
+              android:layout_width="match_parent"
+              android:layout_height="0dp"
+              android:layout_weight="0.6"
+              android:id="@+id/table"
+
+              app:tabGravity="fill"
+
+
+
+              ></com.google.android.material.tabs.TabLayout>
+
+
+
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_4"
         android:background="#A09797"
         />
 
-        <androidx.viewpager.widget.ViewPager
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/view_pager1"
-            ></androidx.viewpager.widget.ViewPager>
+    <androidx.viewpager.widget.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="9"
+        android:id="@+id/view_pager1"
+        ></androidx.viewpager.widget.ViewPager>
+
+
+
+
 
 
 </LinearLayout>
