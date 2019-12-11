@@ -72,10 +72,12 @@ public class FilmFragment extends WDFragment {
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
             linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
             rvQu.setLayoutManager(linearLayoutManager);
-            FindDepartmentAdapter wellreceived = new FindDepartmentAdapter(R.layout.depart_item, data);
+            final FindDepartmentAdapter wellreceived = new FindDepartmentAdapter(R.layout.depart_item, data);
             wellreceived.setWork(new FindDepartmentAdapter.Work() {
                 @Override
-                public void sad(int id, String name) {
+                public void sad(int id, String name,int myposition) {
+                    wellreceived.getIndex(myposition);
+                    wellreceived.notifyDataSetChanged();
                     keshi.setText(name);
                     findSickCircleListPresenter.reqeust(id, 1, 5);
                 }

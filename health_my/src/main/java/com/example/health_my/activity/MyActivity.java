@@ -4,6 +4,7 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -44,6 +45,8 @@ public class MyActivity extends WDActivity {
     LinearLayout myMoney;
     @BindView(R2.id.my_collection)
     LinearLayout myCollection;
+    @BindView(R2.id.jian)
+    ImageView jian;
     private SharedPreferences sp;
     private String headPic;
     private String userName;
@@ -69,7 +72,12 @@ public class MyActivity extends WDActivity {
 
         username.setText(userName);
 
-
+        jian.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intentByRouter(Constant.ACTIVITY_URL_Cine);
+            }
+        });
         textSign.setOnClickListener(new View.OnClickListener() {
 
             @Override

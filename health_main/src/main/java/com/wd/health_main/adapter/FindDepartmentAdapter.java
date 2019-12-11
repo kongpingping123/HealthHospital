@@ -1,5 +1,6 @@
 package com.wd.health_main.adapter;
 
+import android.graphics.Color;
 import android.view.View;
 
 import androidx.annotation.Nullable;
@@ -21,16 +22,26 @@ public class FindDepartmentAdapter extends BaseQuickAdapter<DepartmentBean, Base
     public FindDepartmentAdapter(int layoutResId, @Nullable List<DepartmentBean> data) {
         super(layoutResId, data);
     }
-
+    private int myposition;
+    public void getIndex(int myposition){
+        this.myposition= myposition;
+    }
     @Override
     protected void convert(final BaseViewHolder helper, DepartmentBean item) {
-        helper.setText(R.id.depart_tv,item.departmentName+"      ");
+        helper.setText(R.id.depart_tv," "+item.departmentName+"      ");
+        final int position = helper.getLayoutPosition();
+        if (position==myposition){
+            helper.setTextColor(R.id.depart_tv, Color.BLUE);
+        }else {
+            helper.setTextColor(R.id.depart_tv,Color.GRAY);
+        }
         final int  idd=  item.id;
         final String name = item.departmentName;
         helper.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                work.sad(idd,name);
+                helper.setTextColor(R.id.depart_tv, Color.BLUE);
+                work.sad(idd,name,position);
             }
         });
 
@@ -42,6 +53,6 @@ public class FindDepartmentAdapter extends BaseQuickAdapter<DepartmentBean, Base
     }
 
     public interface Work{
-        void sad(int id,String name);
+        void sad(int id,String name,int myposition);
     }
 }

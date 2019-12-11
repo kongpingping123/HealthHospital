@@ -114,10 +114,12 @@ public class InquiryActivity extends WDActivity {
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
             linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
             inquiryRv.setLayoutManager(linearLayoutManager);
-            FindDepartmentAdapter wellreceived = new FindDepartmentAdapter(com.wd.health_main.R.layout.depart_item, data);
+            final FindDepartmentAdapter wellreceived = new FindDepartmentAdapter(com.wd.health_main.R.layout.depart_item, data);
             wellreceived.setWork(new FindDepartmentAdapter.Work() {
                 @Override
-                public void sad(int id, String name) {
+                public void sad(int id, String name,int myposition) {
+                    wellreceived.getIndex(myposition);
+                    wellreceived.notifyDataSetChanged();
                     idddd = id;
                     findDoctorListPresenter.reqeust(idddd, 4, 1, 1, 5);
                 }
