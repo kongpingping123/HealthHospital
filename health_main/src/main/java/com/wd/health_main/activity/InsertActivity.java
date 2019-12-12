@@ -1,14 +1,18 @@
 package com.wd.health_main.activity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.wd.common.bean.IntBase;
 import com.wd.common.core.DataCall;
 import com.wd.common.core.WDActivity;
 import com.wd.common.core.exception.ApiException;
+import com.wd.common.util.Constant;
 import com.wd.health_main.R;
 import com.wd.health_main.R2;
 import com.wd.health_main.presenter.IntjingPresenter;
@@ -16,6 +20,8 @@ import com.wd.health_main.presenter.IntjingPresenter;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+
+@Route(path = Constant.ACTIVITY_URL_Coms)
 public class InsertActivity extends WDActivity {
 
     @BindView(R2.id.drugs_name)
@@ -41,7 +47,8 @@ public class InsertActivity extends WDActivity {
     @BindView(R2.id.drugs_wenhao)
     TextView drugsWenhao;
     private IntjingPresenter intjingPresenter;
-    private int id;
+    private int ids;
+    private SharedPreferences sp;
 
     @Override
     protected int getLayoutId() {
@@ -51,9 +58,9 @@ public class InsertActivity extends WDActivity {
     @Override
     protected void initView() {
         intjingPresenter = new IntjingPresenter(new intko());
-        Intent intent = getIntent();
-        id = intent.getIntExtra("id", 0);
-        intjingPresenter.reqeust(2);
+        sp = getSharedPreferences("name", Context.MODE_PRIVATE);
+        ids = sp.getInt("Ids", 0);
+        intjingPresenter.reqeust(ids);
 
 
     }
@@ -68,19 +75,18 @@ public class InsertActivity extends WDActivity {
 
         @Override
         public void success(IntBase data, Object... args) {
-            Log.d("aaa1", "success: " + data);
-          drugsChengfen.setText(data.approvalNumber);
-       drugsJinji.setText(data.component);
-           drugsZhuzhi.setText(data.effect);
-           drugsYongfa.setText(data.mindMatter);
-           drugsXingzhuang.setText(data.name);
-           drugsBaozhuang.setText(data.shape);
-           drugsFanying.setText(data.sideEffects);
-           drugsChucang.setText(data.storage);
-           drugsShixiang.setText(data.taboo);
-           drugsWenhao.setText(data.usage);
 
-
+            drugsName.setText(data.name);
+            drugsChengfen.setText(data.component);
+            drugsJinji.setText(data.taboo);
+            drugsZhuzhi.setText(data.effect);
+            drugsYongfa.setText(data.usage);
+            drugsXingzhuang.setText(data.shape);
+            drugsBaozhuang.setText(data.packing);
+            drugsFanying.setText(data.sideEffects);
+            drugsChucang.setText(data.storage);
+            drugsShixiang.setText(data.mindMatter);
+            drugsWenhao.setText(data.approvalNumber);
         }
 
         @Override

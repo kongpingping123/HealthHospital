@@ -2,7 +2,12 @@ package com.wd.common.bean;
 
 public class CommBase {
 
-
+//id	int	病症详情id
+//pathology	string	病理
+//symptom	string	症状
+//benefitTaboo	string	宜与忌
+//chineseMedicineTreatment	string	中药治疗
+//westernMedicineTreatment	string	西药治疗
 
     public String benefitTaboo;
     public String chineseMedicineTreatment;
@@ -11,55 +16,7 @@ public class CommBase {
     public int id;
     public String pathology;
     public String symptom;
+    public String westernMedicineTreatment;
 
-    public CommBase(String benefitTaboo, String chineseMedicineTreatment, long createTime, int diseaseCategoryId, int id, String pathology, String symptom) {
-        this.benefitTaboo = benefitTaboo;
-        this.chineseMedicineTreatment = chineseMedicineTreatment;
-        this.createTime = createTime;
-        this.diseaseCategoryId = diseaseCategoryId;
-        this.id = id;
-        this.pathology = pathology;
-        this.symptom = symptom;
-    }
 
-    public String getBenefitTaboo() {
-        return benefitTaboo;
-    }
-
-    public String getChineseMedicineTreatment() {
-        return chineseMedicineTreatment;
-    }
-
-    public long getCreateTime() {
-        return createTime;
-    }
-
-    public int getDiseaseCategoryId() {
-        return diseaseCategoryId;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public String getPathology() {
-        return pathology;
-    }
-
-    public String getSymptom() {
-        return symptom;
-    }
-
-    @Override
-    public String toString() {
-        return "CommBase{" +
-                "benefitTaboo='" + benefitTaboo + '\'' +
-                ", chineseMedicineTreatment='" + chineseMedicineTreatment + '\'' +
-                ", createTime=" + createTime +
-                ", diseaseCategoryId=" + diseaseCategoryId +
-                ", id=" + id +
-                ", pathology='" + pathology + '\'' +
-                ", symptom='" + symptom + '\'' +
-                '}';
-    }
 }

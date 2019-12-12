@@ -30,24 +30,19 @@
         android:textColor="#fff"
         />
 
-        <ImageView
-            android:layout_width="@dimen/dp_150"
-            android:layout_height="@dimen/dp_150"
-            android:layout_below="@id/login_iv"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/dp_32"
-            android:background="@drawable/button"
-            />
+
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:background="@drawable/button"
+            android:layout_width="@dimen/dp_150"
+            android:layout_height="@dimen/dp_150"
             android:text="0"
+            android:gravity="center"
             android:textColor="#2196F3"
-            android:textSize="48sp"
+            android:textSize="28sp"
             android:layout_centerHorizontal="true"
             android:id="@+id/text_money"
-            android:layout_marginTop="@dimen/dp_120"
+            android:layout_marginTop="@dimen/dp_32"
             />
 
         <TextView

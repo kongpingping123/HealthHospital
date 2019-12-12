@@ -43,20 +43,10 @@ public class Mybingadapter extends RecyclerView.Adapter<Mybingadapter.myViewHold
     public void onBindViewHolder(@NonNull Mybingadapter.myViewHolder holder, final int position) {
 
         holder.textView.setText(list.get(position).name);
-
-          holder.itemView.setOnClickListener(new View.OnClickListener() {
-              @Override
-              public void onClick(View v) {
-                    work.sad();
-              }
-          });
            holder.itemView.setOnClickListener(new View.OnClickListener() {
                @Override
                public void onClick(View v) {
-                   jing.gg(position,list.get(position).name);
-
-
-
+                   jing.gg(list.get(position).id,list.get(position).name);
                }
            });
 

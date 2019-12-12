@@ -87,13 +87,17 @@ public class MoneyActivity extends WDActivity {
 
         double result;
         private DecimalFormat decimalFormat;
+        private SharedPreferences.Editor edit;
 
         @Override
         public void success(Result data, Object... args) {
+            edit = sp.edit();
             if (data.getStatus().equals("0000")) {
                 decimalFormat = new DecimalFormat("######0.00");
                 result = (double) data.getResult();
                 textMoney.setText(decimalFormat.format(result));
+                edit.putString("money", String.valueOf(result));
+                edit.commit();
             }
         }
 

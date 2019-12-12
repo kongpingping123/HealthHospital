@@ -77,10 +77,10 @@ public class RegisterActivity extends WDActivity {
                 String email = reEmail.getText().toString();
                 String verify = reVerify.getText().toString();
                 String pwd = rePwd.getText().toString();
-             //   String pwd1 = rePwd1.getText().toString();
+                //   String pwd1 = rePwd1.getText().toString();
                 String yq = reYq.getText().toString();
                 String pwds = RsaCoder.encryptByPublicKey(pwd);
-                //String pwdss = RsaCoder.encryptByPublicKey(pwd1);
+                //   String pwdss = RsaCoder.encryptByPublicKey(pwd1);
 
                 registerPresenter.reqeust(email,verify,pwds,pwds);
             }

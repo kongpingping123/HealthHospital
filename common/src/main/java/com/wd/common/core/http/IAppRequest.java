@@ -1,5 +1,6 @@
 package com.wd.common.core.http;
 
+import com.wd.common.bean.Collection;
 import com.wd.common.bean.InFo;
 import com.wd.common.bean.LVienna;
 import com.wd.common.bean.Login;
@@ -7,6 +8,9 @@ import com.wd.common.bean.Money;
 import com.wd.common.bean.Register;
 import com.wd.common.bean.Result;
 import com.wd.common.bean.Video;
+import com.wd.common.bean.VideoComment;
+import com.wd.common.bean.VideoGroup;
+import com.wd.common.bean.VideoVo;
 import com.wd.common.bean.Vienna;
 import com.wd.common.bean.WeiXin;
 
@@ -187,6 +191,57 @@ public interface IAppRequest {
                                                        @Query("sortBy")int sortBy,
                                                        @Query("page")int page,
                                                        @Query("count")int count);
+
+    //查询健康讲堂类目
+    @GET("user/video/v1/findVideoCategoryList")
+    Observable<Result<List<VideoGroup>>> findVideoCategoryList();
+
+
+    //根据视频类目查询视频列表
+    @GET("user/video/v1/findVideoVoList")
+    Observable<Result<List<VideoVo>>> findVideoVoList(@Header("userId") int userId,
+                                                      @Header("sessionId") String sessionId,
+                                                      @Query("categoryId") int categoryId,
+                                                      @Query("page") int page,
+                                                      @Query("count") int count
+    );
+
+
+    //健康课堂视频购买
+    @POST("user/video/verify/v1/videoBuy")
+    @FormUrlEncoded
+    Observable<Result> videoBuy(@Header("userId") int userId,
+                                @Header("sessionId") String sessionId,
+                                @Field("videoId") int videoId,
+                                @Field("price") int price
+    );
+
+    //发表视频评论（弹幕）
+    @POST("user/video/verify/v1/addVideoComment")
+    @FormUrlEncoded
+    Observable<Result> addVideoComment(@Header("userId") int userId,
+                                       @Header("sessionId") String sessionId,
+                                       @Field("videoId") int videoId,
+                                       @Field("price") String price
+    );
+
+    //查询视频评论列表
+    @GET("user/video/v1/findVideoCommentList")
+    Observable<Result<List<VideoComment>>> findVideoCommentList(@Query("videoId") int videoId);
+
+
+    //健康课堂视频收藏
+    @POST("user/video/verify/v1/addUserVideoCollection")
+    @FormUrlEncoded
+    Observable<Result> addUserVideoCollection(@Header("userId") int userId,
+                                              @Header("sessionId") String sessionId,
+                                              @Field("videoId") int videoId);
+
+
+
+   //查询用户收藏病友圈列表
+    @GET("user/verify/v1/findUserSickCollectionList")
+    Observable<Result<List<Collection>>>findUserSickCollectionList(@Header("userId")int userId, @Header("sessionId")String sessionId,@Query("page")int page,@Query("count")int count);
 }
 
 

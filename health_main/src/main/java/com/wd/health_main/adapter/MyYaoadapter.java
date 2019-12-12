@@ -50,8 +50,7 @@ public class MyYaoadapter extends RecyclerView.Adapter<MyYaoadapter.myViewHolder
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                  jing.gg(position);
-
+                jing.gg(list.get(position).id,list.get(position).name);
             }
         });
     }
@@ -77,14 +76,14 @@ public class MyYaoadapter extends RecyclerView.Adapter<MyYaoadapter.myViewHolder
         }
     }
 
-    public Jing jing;
+    private Jing jing;
 
     public void setJing(Jing jing) {
         this.jing = jing;
     }
 
     public interface  Jing{
-        void gg(int id);
+        void gg(int id,String name);
     }
 
 }

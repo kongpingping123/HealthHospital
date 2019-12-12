@@ -133,7 +133,7 @@ public class LoginActivity extends WDActivity {
             edit.putString("sessionId", data.sessionId);
             edit.putInt("Id", data.id);
             edit.commit();
-            intent(MyActivity.class);
+            finish();
         }
 
         @Override

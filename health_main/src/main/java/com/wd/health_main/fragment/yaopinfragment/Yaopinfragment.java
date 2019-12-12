@@ -1,6 +1,8 @@
 package com.wd.health_main.fragment.yaopinfragment;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.util.Log;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -39,7 +41,10 @@ public class Yaopinfragment extends WDFragment {
     private GridLayoutManager gridLayoutManager;
     private MyYaoadapter myYaoadapter;
      private int id1;
-    @Override
+     private SharedPreferences sp;
+     private SharedPreferences.Editor edit;
+
+     @Override
     public String getPageName() {
         return null;
     }
@@ -57,6 +62,12 @@ public class Yaopinfragment extends WDFragment {
 
         linearLayoutManager = new LinearLayoutManager(getContext());
         myDrougadapter = new MyDrougadapter(getContext());
+        myDrougadapter.setOnActu(new MyDrougadapter.OnActu() {
+            @Override
+            public void onActi(int Id) {
+                yaoPresenter.reqeust(Id,1,5);
+            }
+        });
         recyView4.setLayoutManager(linearLayoutManager);
         recyView4.setAdapter(myDrougadapter);
 
@@ -66,15 +77,20 @@ public class Yaopinfragment extends WDFragment {
 
         gridLayoutManager = new GridLayoutManager(getContext(),3);
         myYaoadapter = new MyYaoadapter(getContext());
+        myYaoadapter.setJing(new MyYaoadapter.Jing() {
+            @Override
+            public void gg(int id, String name) {
+                intentByRouter(Constant.ACTIVITY_URL_Coms);
+                sp = getActivity().getSharedPreferences("name", Context.MODE_PRIVATE);
+                edit = sp.edit();
+                edit.putInt("Ids",id);
+                edit.putString("Names",name);
+                edit.commit();
+            }
+        });
         recyView5.setLayoutManager(gridLayoutManager);
         recyView5.setAdapter(myYaoadapter);
-     myDrougadapter.setOnActu(new MyDrougadapter.OnActu() {
-         @Override
-         public void onActi(int Id) {
-             yaoPresenter.reqeust(Id,1,5);
-         }
 
-     });
 
     }
 
@@ -103,22 +119,6 @@ public class Yaopinfragment extends WDFragment {
             myYaoadapter.clear();
             myYaoadapter.AddAll(data);
             myYaoadapter.notifyDataSetChanged();
-
-             myYaoadapter.setJing(new MyYaoadapter.Jing() {
-
-
-
-                 @Override
-                 public void gg(int id) {
-                     for (int i = 0; i <data.size() ; i++) {
-                         id1 = data.get(id).getId();
-
-                     }
-                     Intent intent = new Intent(getActivity(), InsertActivity.class);
-                     intent.putExtra("id",id1);
-                     startActivity(intent);
-                 }
-             });
         }
 
         @Override

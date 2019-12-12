@@ -1,6 +1,8 @@
 package com.wd.health_main.fragment.yaopinfragment;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.util.Log;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -40,8 +42,6 @@ public class Bingzhengfragment extends WDFragment {
     private BingPresenter bingPresenter;
     private GridLayoutManager gridLayoutManager;
     private Mybingadapter mybingadapter;
-    private int id1;
-    private String name1;
     @Override
     public String getPageName() {
         return null;
@@ -71,18 +71,24 @@ public class Bingzhengfragment extends WDFragment {
         bingPresenter.reqeust(2);
 
         gridLayoutManager = new GridLayoutManager(getContext(),2);
-     recyView3.setLayoutManager(gridLayoutManager);
+        recyView3.setLayoutManager(gridLayoutManager);
         mybingadapter = new Mybingadapter(getContext());
-      recyView3.setAdapter(mybingadapter);
-      mybingadapter.setWork(new Mybingadapter.Work() {
-          @Override
-          public void sad() {
+        recyView3.setAdapter(mybingadapter);
+        mybingadapter.setJing(new Mybingadapter.Jing() {
 
-              intentByRouter(Constant.ACTIVITY_URL_Com);
+            private SharedPreferences.Editor edit;
+            private SharedPreferences sp;
 
-          }
-      });
-
+            @Override
+            public void gg(int id, String name) {
+                 intentByRouter(Constant.ACTIVITY_URL_Com);
+                sp = getActivity().getSharedPreferences("name", Context.MODE_PRIVATE);
+                edit = sp.edit();
+                edit.putInt("Id",id);
+                edit.putString("Name",name);
+                edit.commit();
+            }
+        });
         mydiseaseadapter.setOnActu(new Mydiseaseadapter.OnActu() {
             @Override
             public void onActi(int Id) {
@@ -111,32 +117,15 @@ public class Bingzhengfragment extends WDFragment {
 
     }
 
-      class bv implements DataCall<List<BingBase>>{
+      class bv implements DataCall<List<BingBase>> {
 
           @Override
           public void success(final List<BingBase> data, Object... args) {
-              Log.d("aaa1", "success: "+data);
-             mybingadapter.clear();
-                mybingadapter.AddAll(data);
-                mybingadapter.notifyDataSetChanged();
-              mybingadapter.setJing(new Mybingadapter.Jing() {
-
-
-
-                  @Override
-                  public void gg(int id, String name) {
-                      for (int i = 0; i <data.size() ; i++) {
-                          id1 = data.get(id).getId();
-                          name1 = data.get(i).getName();
-                      }
-                      Intent intent =  new Intent(getActivity(), CommonActivity.class);
-                      intent.putExtra("id",id1);
-                      intent.putExtra("i",name1);
-                      startActivity(intent);
-
-                  }
-              });
-                  }
+              Log.d("aaa1", "success: " + data);
+              mybingadapter.clear();
+              mybingadapter.AddAll(data);
+              mybingadapter.notifyDataSetChanged();
+          }
 
 
           @Override
