@@ -5,9 +5,56 @@
     android:layout_height="match_parent">
 
 
+
+     <RelativeLayout
+         android:background="@android:color/transparent"
+         android:layout_width="match_parent"
+         android:layout_height="@dimen/dp_50">
+          <ImageView
+              android:layout_width="@dimen/dp_32"
+              android:layout_height="@dimen/dp_32"
+              android:layout_marginLeft="@dimen/dp_12"
+              android:layout_centerVertical="true"
+              android:id="@+id/text_login"
+              android:background="@drawable/wallet_icon_clock_n"
+              />
+
+             <TextView
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                  android:text="养生美容"
+                 android:textSize="@dimen/sp_20"
+                    android:layout_marginLeft="@dimen/dp_140"
+                   android:layout_centerVertical="true"
+                 />
+          <ImageView
+              android:layout_alignParentRight="true"
+              android:layout_marginRight="@dimen/dp_15"
+              android:layout_centerVertical="true"
+              android:background="@drawable/common_nav_message_black_n"
+              android:layout_width="@dimen/dp_24"
+              android:layout_height="@dimen/dp_24"/>
+
+
+     </RelativeLayout>
+     <View
+         android:layout_width="match_parent"
+         android:background="#F2F2F2"
+         android:layout_height="10dp"
+
+         />
      <com.jcodecraeer.xrecyclerview.XRecyclerView
          android:layout_width="match_parent"
-         android:layout_height="match_parent"
+         android:layout_height="0dp"
+        android:layout_weight="8"
          android:id="@+id/xrecycler_view"
          ></com.jcodecraeer.xrecyclerview.XRecyclerView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="------- . ---------"
+            android:textSize="@dimen/sp_23"
+
+            />
 </LinearLayout>

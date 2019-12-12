@@ -13,6 +13,7 @@ public class Constant {
     public final static String ACTIVITY_URL_INQUIRY = "/patient/InquiryActivity";
     public final static String ACTIVITY_URL_MY_LOGIN ="/my/MyActivity";
     public final static String ACTIVITY_URL_WRITE = "/write/PublishActivity";
+    public final static String ACTIVITY_URL_MY_LOG ="/my/LoginActivity";
 
     //-----------open_login----都不要动我的开放登录变量，谁动谁傻叉-----
 
@@ -31,6 +32,7 @@ public class Constant {
     public final static String ACTIVITY_URL_Com = "/main/CommonActivity";
     public final static String ACTIVITY_URL_Coms = "/main/InsertActivity";
     public final static String ACTIVITY_URL_Don = "/main/DonActivity";
+    public final static String ACTIVITY_URL_Int = "/main/InterviewActivity";
     //-----------open_main----首页模块随便动，我看提交历史删你库-----
 
 }

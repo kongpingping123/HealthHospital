@@ -2,9 +2,13 @@ package com.wd.health_main.adapter;
 
 import android.content.Context;
 import android.net.Uri;
+import android.net.http.SslError;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.SslErrorHandler;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -33,7 +37,7 @@ public class InformationAdapter extends RecyclerView.Adapter {
 
     private List<XiangqingBase> list;
     private Context context;
-
+       private String condet_context;
     public InformationAdapter(Context context) {
         list = new ArrayList<>();
         this.context = context;
@@ -88,7 +92,7 @@ public class InformationAdapter extends RecyclerView.Adapter {
         int viewType = viewHolder.getItemViewType();
         XiangqingBase xiangqingBase = list.get(i);
 
-        String[] split =xiangqingBase .thumbnail.split(";");
+        String[] split = xiangqingBase.thumbnail.split(";");
 
 
         Date date = new Date(xiangqingBase.releaseTime);
@@ -109,14 +113,13 @@ public class InformationAdapter extends RecyclerView.Adapter {
                 }
             });*/
 
-            
-                  imgNullViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-                      @Override
-                      public void onClick(View v) {
-                            jing.gg(i);
-                      }
-                  });
 
+            imgNullViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    jing.gg(i);
+                }
+            });
 
 
         } else if (viewType == 2) {
@@ -135,12 +138,12 @@ public class InformationAdapter extends RecyclerView.Adapter {
             Uri uri2 = Uri.parse(split[2]);
             imgThreeViewHolder.information_img_three_img3.setImageURI(uri2);
 
-                 imgThreeViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-                     @Override
-                     public void onClick(View v) {
-                                jing.gg(i);
-                     }
-                 });
+            imgThreeViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    jing.gg(i);
+                }
+            });
           /*  imgThreeViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -174,20 +177,36 @@ public class InformationAdapter extends RecyclerView.Adapter {
 
             }
         });*/
-             imgOneViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-                 @Override
-                 public void onClick(View v) {
-                     jing.gg(i);
-                 }
-             });
-
+            imgOneViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    jing.gg(i);
+                }
+            });
 
 
         }
+
+       /* ((ImgNullViewHolder) viewHolder).condet_context.getSettings(). setJavaScriptEnabled(true);
+
+
+        ((ImgNullViewHolder) viewHolder).condet_context.setWebViewClient(new WebViewClient(){
+
+            @Override
+            public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
+                super.onReceivedSslError(view, handler, error);
+                handler.proceed();
+            }
+        });
+
+        //设置图片显示宽度100% 高度自适应
+        String varjs = "<script type='text/javascript'> \nwindow.onload = function()\n{var $img = document.getElementsByTagName('img');for(var p in  $img){$img[p].style.width = '100%'; $img[p].style.height ='auto'}}</script>";
+        ((ImgNullViewHolder) viewHolder).condet_context.loadData(varjs+list.get(i).content, "textml", "UTF-8");
+
+    }*/
+
+
     }
-
-
-
 
     @Override
     public int getItemCount() {
@@ -203,6 +222,7 @@ public class InformationAdapter extends RecyclerView.Adapter {
         private final TextView information_img_null_title;
         private final TextView information_img_null_source;
         private final TextView information_img_null_releaseTime;
+        public WebView condet_context;
 
         public ImgNullViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -218,6 +238,7 @@ public class InformationAdapter extends RecyclerView.Adapter {
         private final TextView information_img_one_title;
         private final TextView information_img_one_releaseTime;
         private final TextView information_img_one_source;
+        public WebView condet_context;
 
         public ImgOneViewHolder(@NonNull View itemView) {
             super(itemView);

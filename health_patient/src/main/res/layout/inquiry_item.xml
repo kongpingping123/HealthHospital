@@ -21,6 +21,16 @@
         android:layout_marginTop="@dimen/dp_102"
         android:layout_width="@dimen/dp_91"
         android:layout_height="@dimen/dp_26"/>
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/inquiry_tv_bule"
+        android:textColor="#ffffff"
+        android:textSize="@dimen/sp_12"
+        android:gravity="center"
+        android:background="@drawable/inquiry_bule"
+        android:layout_marginTop="@dimen/dp_102"
+        android:layout_width="@dimen/dp_91"
+        android:layout_height="@dimen/dp_26"/>
 
 
 </RelativeLayout>

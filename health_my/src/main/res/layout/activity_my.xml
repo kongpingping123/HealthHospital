@@ -239,6 +239,7 @@
                 <ImageView
                     android:layout_width="@dimen/dp_30"
                     android:layout_height="@dimen/dp_30"
+                    android:id="@+id/caifang"
                     android:layout_gravity="center"
                     android:src="@drawable/my_icon_advice_n"
                     />

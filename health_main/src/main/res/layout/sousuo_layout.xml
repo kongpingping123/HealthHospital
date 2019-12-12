@@ -1,51 +1,206 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical"
-    android:layout_height="match_parent">
+  >
 
-
-
-      <RelativeLayout
-          android:background="@android:color/transparent"
+      <LinearLayout
+          android:gravity="center"
+          android:layout_marginTop="@dimen/dp_32"
+          android:orientation="horizontal"
           android:layout_width="match_parent"
-          android:layout_height="@dimen/dp_50">
+          android:layout_height="@dimen/dp_32">
+
             <ImageView
+                android:id="@+id/seach_back_img"
+                android:padding="@dimen/dp_7"
+                android:src="@drawable/common_icon_back_black_n"
                 android:layout_width="@dimen/dp_32"
-                android:layout_height="@dimen/dp_32"
-                android:layout_marginLeft="@dimen/dp_12"
-                android:layout_centerVertical="true"
-                android:id="@+id/back"
-                android:background="@drawable/common_icon_back_black_n"
-                />
+                android:layout_height="@dimen/dp_32" />
+
             <EditText
-                android:id="@+id/nr"
-                android:layout_marginLeft="@dimen/dp_80"
-                android:layout_centerVertical="true"
-                android:textColor="#999999"
+                android:id="@+id/seach_edit"
+                android:hint="病症、药品名称、医生姓名"
+                android:padding="@dimen/dp_7"
+                android:gravity="center_vertical"
                 android:textSize="@dimen/sp_12"
-                android:hint="病症,药品名称，医生姓名"
-                android:background="@drawable/textview_style"
-                android:layout_width="@dimen/dp_210"
-                android:layout_height="@dimen/dp_27"/>
+                android:lines="1"
+                android:imeOptions="actionSearch"
+                android:singleLine="true"
+                android:textColor="#333333"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_width="@dimen/dp_260"
+                android:layout_height="@dimen/dp_32" />
+
             <TextView
-                android:id="@+id/search"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="@dimen/dp_300"
-                android:layout_marginTop="@dimen/dp_28"
+                android:id="@+id/seach_seach"
+                android:layout_marginLeft="@dimen/dp_10"
                 android:text="搜索"
-                android:textColor="#fff"
-                android:textSize="@dimen/sp_20" />
+                android:textColor="#3087ea"
+                android:textSize="@dimen/sp_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
-      </RelativeLayout>
+      </LinearLayout>
 
-     <androidx.recyclerview.widget.RecyclerView
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"
-         android:id="@+id/searrecycleview"
+      <LinearLayout
+          android:orientation="vertical"
+          android:layout_marginTop="@dimen/dp_5"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content">
 
-         android:layout_marginTop="@dimen/dp_10"
-         ></androidx.recyclerview.widget.RecyclerView>
+            <TextView
+                android:id="@+id/seach_histry"
+                android:text="搜索历史"
+                android:textColor="#3087ea"
+                android:textSize="@dimen/sp_16"
+                android:layout_marginLeft="@dimen/dp_20"
+                android:layout_marginTop="@dimen/dp_30"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:id="@+id/seach_histry_line"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_marginRight="@dimen/dp_20"
+                android:layout_marginLeft="@dimen/dp_20"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_200">
+
+                  <com.wd.health_main.fragment.yaopinfragment.HistryFlowView
+                      android:id="@+id/seach_histry_flow"
+                      android:layout_width="match_parent"
+                      android:layout_height="match_parent"></com.wd.health_main.fragment.yaopinfragment.HistryFlowView>
+
+
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/seach_popular"
+                android:text="热门搜索"
+                android:textColor="#3087ea"
+                android:textSize="@dimen/sp_16"
+                android:layout_marginLeft="@dimen/dp_20"
+                android:layout_marginTop="@dimen/dp_30"
+                android:layout_marginRight="@dimen/dp_10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:id="@+id/line"
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_marginLeft="@dimen/dp_20"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_300">
+
+                  <com.wd.health_main.fragment.yaopinfragment.HistryFlowView
+                      android:layout_width="match_parent"
+                      android:layout_height="match_parent"
+                      android:id="@+id/seach_flow"
+                      ></com.wd.health_main.fragment.yaopinfragment.HistryFlowView>
+            </LinearLayout>
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                  <LinearLayout
+                      android:id="@+id/line1"
+                      android:visibility="gone"
+                      android:orientation="vertical"
+                      android:layout_width="match_parent"
+                      android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/seach_doctor"
+                            android:text="医生"
+                            android:textColor="#3087ea"
+                            android:textSize="@dimen/sp_16"
+                            android:layout_marginLeft="@dimen/dp_20"
+                            android:layout_marginTop="@dimen/dp_30"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recycler_doctor"
+                            android:layout_marginLeft="@dimen/dp_20"
+                            android:layout_marginTop="@dimen/dp_10"
+                            android:layout_marginRight="@dimen/dp_20"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                        </androidx.recyclerview.widget.RecyclerView>
+
+                        <TextView
+                            android:id="@+id/seach_diease"
+                            android:text="病症"
+                            android:textColor="#3087ea"
+                            android:textSize="@dimen/sp_16"
+                            android:layout_marginLeft="@dimen/dp_20"
+                            android:layout_marginTop="@dimen/dp_30"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recycler_disease"
+                            android:layout_marginLeft="@dimen/dp_20"
+                            android:layout_marginTop="@dimen/dp_10"
+                            android:layout_marginRight="@dimen/dp_20"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                        </androidx.recyclerview.widget.RecyclerView>
+
+                        <TextView
+                            android:id="@+id/seach_drugs"
+                            android:text="药品"
+                            android:textColor="#3087ea"
+                            android:textSize="@dimen/sp_16"
+                            android:layout_marginLeft="@dimen/dp_20"
+                            android:layout_marginTop="@dimen/dp_30"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recycler_drugs"
+                            android:layout_marginLeft="@dimen/dp_20"
+                            android:layout_marginTop="@dimen/dp_10"
+                            android:layout_marginRight="@dimen/dp_20"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                        </androidx.recyclerview.widget.RecyclerView>
+
+                  </LinearLayout>
+
+            </ScrollView>
+
+            <LinearLayout
+                android:id="@+id/line2"
+                android:gravity="center"
+                android:visibility="gone"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/dp_180"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                  <ImageView
+                      android:src="@drawable/no_search_message"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content" />
+
+                  <TextView
+                      android:id="@+id/seach_no_message"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+      </LinearLayout>
+
+
+
 </LinearLayout>

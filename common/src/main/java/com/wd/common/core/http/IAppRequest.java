@@ -1,7 +1,10 @@
 package com.wd.common.core.http;
 
 import com.wd.common.bean.Collection;
+import android.content.Intent;
+
 import com.wd.common.bean.InFo;
+import com.wd.common.bean.InteBase;
 import com.wd.common.bean.LVienna;
 import com.wd.common.bean.Login;
 import com.wd.common.bean.Money;
@@ -180,7 +183,7 @@ public interface IAppRequest {
            Observable<Result<DtonBase>>deisebase(@Query("infoId")int infoId);
 
              @GET("share/v1/homePageSearch")
-            Observable<Result<List<SousuoBase>>>sousuohomepage(@Query("keyWord")String keyWord);
+            Observable<Result<SousuoBase>>ousuohomepage(@Query("keyWord") int keyWord);
     //根据关键词查询病友圈
     @GET("user/sickCircle/v1/searchSickCircle")
     Observable<Result<List<SearchBean>>>searchSickCircle(@Query("keyWord")String keyWord);
@@ -191,6 +194,11 @@ public interface IAppRequest {
                                                        @Query("sortBy")int sortBy,
                                                        @Query("page")int page,
                                                        @Query("count")int count);
+
+      //查询我的被采纳的建议
+     Observable<Result<List<InteBase>>> intecaifanyijian(@Query("page")int page,@Query("count")int count);
+
+
 
     //查询健康讲堂类目
     @GET("user/video/v1/findVideoCategoryList")
