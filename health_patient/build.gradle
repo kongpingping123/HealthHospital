@@ -47,4 +47,5 @@ dependencies {
     annotationProcessor 'com.alibaba:arouter-compiler:1.2.1'
     api project(path: ':common')
     api project(path: ':health_main')
+    api project(path: ':health_my')
 }
