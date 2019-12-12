@@ -103,7 +103,9 @@ public abstract class WDPresenters<T> {
                     running = false;
                     if (result.getStatus().equals("0000")) {
                         dataCall.success(result, args);
-                    }else{
+                    }else if (result.getStatus().equals("9999")) {
+                        dataCall.success(result, args);
+                    }else  {
                         dataCall.fail(new ApiException(result.getStatus(),result.getMessage()));
                     }
                 }
