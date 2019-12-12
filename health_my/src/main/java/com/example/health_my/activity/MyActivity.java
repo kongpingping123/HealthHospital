@@ -47,6 +47,8 @@ public class MyActivity extends WDActivity {
     LinearLayout myCollection;
     @BindView(R2.id.jian)
     ImageView jian;
+    @BindView(R2.id.caifang)
+    ImageView caifang;
     private SharedPreferences sp;
     private String headPic;
     private String userName;
@@ -121,6 +123,13 @@ public class MyActivity extends WDActivity {
                 intent(CollectionActivity.class);
             }
         });
+        caifang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                     intent(InterviewActivity.class);
+            }
+        });
+
     }
 
     @Override

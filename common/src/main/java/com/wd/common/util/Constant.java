@@ -30,6 +30,7 @@ public class Constant {
     public final static String ACTIVITY_URL_Yao = "/main/Yaopinfragment";
     public final static String ACTIVITY_URL_Com = "/main/CommonActivity";
     public final static String ACTIVITY_URL_Don = "/main/DonActivity";
+    public final static String ACTIVITY_URL_Int = "/main/InterviewActivity";
     //-----------open_main----首页模块随便动，我看提交历史删你库-----
 
 }

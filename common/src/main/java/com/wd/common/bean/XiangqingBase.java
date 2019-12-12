@@ -11,8 +11,9 @@ public class XiangqingBase {
     public String source;
     public String thumbnail;
     public String title;
+    public String content;
 
-        public int getId() {
+    public int getId() {
             return id;
         }
 
