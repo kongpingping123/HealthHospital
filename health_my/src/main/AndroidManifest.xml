@@ -3,15 +3,20 @@
     package="com.example.health_my">
 
     <application>
-        <activity android:name="com.example.health_my.activity.MyActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
+        <activity android:name=".activity.InterviewActivity"/>
+        <activity android:name=".activity.CollectionActivity"></activity>
+        <activity android:name=".activity.MoneyActivity" />
+        <activity android:name=".activity.HistoryActivity" />
+        <activity android:name=".activity.ViennaActivity" />
+        <activity android:name=".activity.FileActivity" />
+        <activity android:name=".activity.ForgetsActivity" />
+        <activity android:name=".activity.ForgetActivity" />
+        <activity android:name=".activity.RegisterActivity" />
+        <activity android:name=".activity.LoginActivity" />
+        <activity android:name=".activity.MyActivity">
         </activity>
         <activity
-            android:name="com.example.health_my.wxapi.WXEntryActivity"
+            android:name=".wxapi.WXEntryActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:launchMode="singleTask"

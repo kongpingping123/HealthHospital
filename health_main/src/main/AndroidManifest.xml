@@ -1,29 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.wd.health_main">
-         <uses-permission android:name="android.permission.INTERNET"/>
-    <application>
-          <activity android:name=".activity.GengduoActivity"/>
-         <activity android:name=".activity.SousuoActivity"/>
-         <activity android:name=".activity.DeiserActivity"/>
-         <activity android:name=".activity.InsertActivity"/>
-        <activity android:name=".activity.HomeActivity"></activity>
-        <activity android:name=".activity.GuidanceActivity" />
-        <activity android:name=".activity.MainActivity"/>
-        <activity android:name=".activity.HomeActivity"
-            android:windowSoftInputMode=""
-            >
 
+    <application>
+        <activity android:name=".activity.GengduoActivity"/>
+
+        <activity android:name=".activity.SousuoActivity" />
+        <activity android:name=".activity.DeiserActivity" />
+        <activity android:name=".activity.PatientActivity" />
+        <activity android:name=".activity.DetailsActivity" />
+        <activity android:name=".activity.InsertActivity" />
+        <activity android:name=".activity.CommonActivity" />
+        <activity android:name=".activity.DrugsActivity" />
+        <activity android:name=".activity.GuidanceActivity" />
+        <activity android:name=".activity.MainActivity" />
+        <activity android:name=".activity.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.GuidanceActivity" />
-        <activity android:name=".activity.MainActivity">
-
-        </activity>
+        <activity android:name=".activity.SearchActivity"></activity>
     </application>
 
 </manifest>

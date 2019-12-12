@@ -1,2 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.health_write" />
+    package="com.example.health_write" >
+<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+<uses-permission android:name="android.permission.CAMERA" />
+<application>
+<activity android:name=".PublishActivity"></activity>
+</application>
+
+    </manifest>
