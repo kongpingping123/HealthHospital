@@ -7,7 +7,6 @@ android {
 
     compileSdkVersion projectConfig.compileSdkVersion
     defaultConfig {
-
         minSdkVersion projectConfig.minSdkVersion
         targetSdkVersion projectConfig.targetSdkVersion
         versionCode projectConfig.versionCode
@@ -47,7 +46,4 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.1.0'
     annotationProcessor 'com.alibaba:arouter-compiler:1.2.1'
     api project(path: ':common')
-    api project(path: ':health_main')
-    api project(path: ':health_my')
-    
 }

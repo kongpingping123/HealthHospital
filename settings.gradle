@@ -1,1 +1,1 @@
-include ':app', ':common', ':health_main',':health_patient',':health_my', ':health_write'
+include ':app', ':common', ':health_main', ':health_patient', ':health_my', ':health_write', ':health_messaging'
