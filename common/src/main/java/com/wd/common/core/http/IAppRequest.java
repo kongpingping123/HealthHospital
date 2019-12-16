@@ -250,6 +250,10 @@ public interface IAppRequest {
    //查询用户收藏病友圈列表
     @GET("user/verify/v1/findUserSickCollectionList")
     Observable<Result<List<Collection>>>findUserSickCollectionList(@Header("userId")int userId, @Header("sessionId")String sessionId,@Query("page")int page,@Query("count")int count);
+
+    //查询医生明细信息
+
+
 }
 
 
