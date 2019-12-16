@@ -1,6 +1,5 @@
 package com.example.health_my.activity;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -23,7 +22,6 @@ import com.wd.common.core.exception.ApiException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class RegisterActivity extends WDActivity {
 
@@ -77,12 +75,13 @@ public class RegisterActivity extends WDActivity {
                 String email = reEmail.getText().toString();
                 String verify = reVerify.getText().toString();
                 String pwd = rePwd.getText().toString();
-                //   String pwd1 = rePwd1.getText().toString();
+                String pwd1 = rePwd1.getText().toString();
                 String yq = reYq.getText().toString();
                 String pwds = RsaCoder.encryptByPublicKey(pwd);
+                String key = RsaCoder.encryptByPublicKey(pwd1);
                 //   String pwdss = RsaCoder.encryptByPublicKey(pwd1);
 
-                registerPresenter.reqeust(email,verify,pwds,pwds);
+                registerPresenter.reqeust(email,verify,pwds,key);
             }
         });
     }

@@ -49,6 +49,10 @@ public class MyActivity extends WDActivity {
     ImageView jian;
     @BindView(R2.id.caifang)
     ImageView caifang;
+    @BindView(R2.id.text_setup)
+    LinearLayout textSetup;
+    @BindView(R2.id.text_follow)
+    LinearLayout textFollow;
     private SharedPreferences sp;
     private String headPic;
     private String userName;
@@ -126,10 +130,21 @@ public class MyActivity extends WDActivity {
         caifang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                     intent(InterviewActivity.class);
+                intent(InterviewActivity.class);
             }
         });
-
+        textSetup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent(SetUpActivity.class);
+            }
+        });
+        textFollow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent(FollowActivity.class);
+            }
+        });
     }
 
     @Override

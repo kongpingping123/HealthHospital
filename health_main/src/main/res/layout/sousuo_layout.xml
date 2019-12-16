@@ -71,10 +71,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp_200">
 
-                  <com.wd.health_main.fragment.yaopinfragment.HistryFlowView
-                      android:id="@+id/seach_histry_flow"
-                      android:layout_width="match_parent"
-                      android:layout_height="match_parent"></com.wd.health_main.fragment.yaopinfragment.HistryFlowView>
+           <ListView
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:id="@+id/text_lv"
+               />
 
 
 
@@ -95,9 +96,10 @@
             <LinearLayout
                 android:id="@+id/line"
                 android:layout_marginTop="@dimen/dp_10"
-                android:layout_marginLeft="@dimen/dp_20"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_300">
+                android:layout_height="@dimen/dp_300"
+
+                >
 
                   <com.wd.health_main.fragment.yaopinfragment.HistryFlowView
                       android:layout_width="match_parent"

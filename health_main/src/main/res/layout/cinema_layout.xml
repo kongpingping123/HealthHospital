@@ -290,7 +290,7 @@
                   android:id="@+id/text_login"
                   android:background="@drawable/wallet_icon_clock_n"
                   />
-              <EditText
+              <TextView
                   android:id="@+id/sousuo"
                   android:layout_marginLeft="@dimen/dp_80"
                   android:layout_centerVertical="true"

@@ -2,13 +2,17 @@ package com.wd.health_main.fragment;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -39,9 +43,6 @@ import com.zhouwei.mzbanner.holder.MZViewHolder;
 
 import java.util.List;
 
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -67,7 +68,7 @@ public class CinemaFragment extends WDFragment {
 
 
     @BindView(R2.id.sousuo)
-    EditText sousuo;
+    TextView sousuo;
     @BindView(R2.id.text_login)
     ImageView textLogin;
     @BindView(R2.id.gengduo)
@@ -84,7 +85,10 @@ public class CinemaFragment extends WDFragment {
 
     private MyXiangqingadapter myXiangqingadapter;
     private InformationAdapter informationAdapter;
-
+    private SharedPreferences sp;
+    private SharedPreferences.Editor edit;
+    private SharedPreferences.Editor id;
+    private SharedPreferences.Editor name;
 
     @Override
     public String getPageName() {
@@ -109,9 +113,7 @@ public class CinemaFragment extends WDFragment {
          gengduo.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
-                 Intent intent = new Intent(getContext(), GengduoActivity.class);
-                 startActivity(intent);
-
+                 intent(GengduoActivity.class);
              }
          });
         //问诊
@@ -136,8 +138,13 @@ public class CinemaFragment extends WDFragment {
         recyView.setAdapter(myZixunadapter);
         myZixunadapter.setOnActu(new MyZixunadapter.OnActu() {
             @Override
-            public void onActi(int Id) {
+            public void onActi(int Id,String name) {
                 xiangqingPresenter.reqeust(Id, 1, 5);
+                sp = getActivity().getSharedPreferences("xiang",Context.MODE_PRIVATE);
+                edit = sp.edit();
+                id = edit.putInt("Id", Id);
+                CinemaFragment.this.name = edit.putString("Name", "");
+                edit.commit();
             }
         });
 
@@ -255,7 +262,9 @@ public class CinemaFragment extends WDFragment {
         @Override
         public void success(List<ZixunBean> data, Object... args) {
             Log.d("aaa", "success: " + data);
+
             myZixunadapter.AllAdd(data);
+
             myZixunadapter.notifyDataSetChanged();
 
         }

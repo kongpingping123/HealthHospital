@@ -1,15 +1,17 @@
 package com.wd.common.core.http;
 
 import com.wd.common.bean.Collection;
-import android.content.Intent;
 
 import com.wd.common.bean.InFo;
 import com.wd.common.bean.InteBase;
 import com.wd.common.bean.LVienna;
 import com.wd.common.bean.Login;
 import com.wd.common.bean.Money;
+import com.wd.common.bean.Popular;
+import com.wd.common.bean.Querydoctor;
 import com.wd.common.bean.Register;
 import com.wd.common.bean.Result;
+import com.wd.common.bean.Seach;
 import com.wd.common.bean.Video;
 import com.wd.common.bean.VideoComment;
 import com.wd.common.bean.VideoGroup;
@@ -41,23 +43,12 @@ import com.wd.common.bean.CircleBean;
 import com.wd.common.bean.DepartmentBean;
 import com.wd.common.bean.DetailsBean;
 import com.wd.common.bean.PatientBean;
-import com.wd.common.bean.Result;
 import com.wd.common.bean.SearchBean;
-import com.wd.common.bean.SousuoBase;
 import com.wd.common.bean.XiangqingBase;
 import com.wd.common.bean.YaoBase;
 import com.wd.common.bean.ZixunBean;
 import com.wd.common.bean.SickBean;
 import com.wd.common.bean.UserInfoBean;
-
-import java.util.List;
-
-import io.reactivex.Observable;
-import retrofit2.http.Field;
-import retrofit2.http.GET;
-import retrofit2.http.Header;
-import retrofit2.http.POST;
-import retrofit2.http.Query;
 
 /**
  * @author dingtao
@@ -181,9 +172,9 @@ public interface IAppRequest {
 
              @GET("share/information/v1/findInformation")
            Observable<Result<DtonBase>>deisebase(@Query("infoId")int infoId);
-
-             @GET("share/v1/homePageSearch")
-            Observable<Result<SousuoBase>>ousuohomepage(@Query("keyWord") int keyWord);
+             //历史搜索
+//             @GET("share/v1/homePageSearch")
+//            Observable<Result<SousuoBase>>ousuohomepage(@Query("keyWord") int keyWord);
     //根据关键词查询病友圈
     @GET("user/sickCircle/v1/searchSickCircle")
     Observable<Result<List<SearchBean>>>searchSickCircle(@Query("keyWord")String keyWord);
@@ -250,6 +241,19 @@ public interface IAppRequest {
    //查询用户收藏病友圈列表
     @GET("user/verify/v1/findUserSickCollectionList")
     Observable<Result<List<Collection>>>findUserSickCollectionList(@Header("userId")int userId, @Header("sessionId")String sessionId,@Query("page")int page,@Query("count")int count);
+
+    //热门搜索
+    @GET("share/v1/popularSearch")
+    Observable<Result<List<Popular>>>popularSearch();
+
+    //查询用户关注医生列表
+    @GET("user/verify/v1/findUserDoctorFollowList")
+    Observable<Result<List<Querydoctor>>>findUserDoctorFollowList(@Header("userId")int userId, @Header("sessionId")String sessionId,@Query("page")int page,@Query("count")int count);
+
+    //首页搜索
+    @GET("share/v1/homePageSearch")
+    Observable<Result<Seach>>homePageSearch(@Query("keyWord")String keyWord);
+
 }
 
 

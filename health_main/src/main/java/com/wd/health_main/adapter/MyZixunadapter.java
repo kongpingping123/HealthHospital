@@ -8,22 +8,22 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.wd.common.bean.ZixunBean;
 import com.wd.health_main.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-
 public class MyZixunadapter extends RecyclerView.Adapter<MyZixunadapter.myViewHolder> {
 
-     private ArrayList<ZixunBean> list;
-     private Context context;
-    private View view;
+      private ArrayList<ZixunBean> list;
+      private Context context;
+      private View view;
       public static final int HOT_TYPE =0;
-    public static final int FASHION_TYE =0;
+      public static final int FASHION_TYE =0;
       private  int type;
       int p;
 
@@ -74,7 +74,7 @@ public class MyZixunadapter extends RecyclerView.Adapter<MyZixunadapter.myViewHo
             public void onClick(View v) {
                 p = (int) v.getTag();
 
-                onActu.onActi(list.get(position).getId());
+                onActu.onActi(list.get(position).getId(),list.get(position).getName());
                 notifyDataSetChanged();
 
             }
@@ -108,7 +108,7 @@ public class MyZixunadapter extends RecyclerView.Adapter<MyZixunadapter.myViewHo
     }
 
     public interface  OnActu{
-        void  onActi(int Id);
+        void  onActi(int Id,String name);
      }
 
 

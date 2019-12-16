@@ -9,7 +9,7 @@
      <RelativeLayout
          android:background="@android:color/transparent"
          android:layout_width="match_parent"
-         android:layout_height="@dimen/dp_50">
+         android:layout_height="@dimen/dp_40">
           <ImageView
               android:layout_width="@dimen/dp_32"
               android:layout_height="@dimen/dp_32"
@@ -22,10 +22,11 @@
              <TextView
                  android:layout_width="wrap_content"
                  android:layout_height="wrap_content"
-                  android:text="养生美容"
+                 android:text="养生美容"
                  android:textSize="@dimen/sp_20"
-                    android:layout_marginLeft="@dimen/dp_140"
-                   android:layout_centerVertical="true"
+                 android:layout_marginLeft="@dimen/dp_140"
+                 android:layout_centerVertical="true"
+                 android:id="@+id/text_names"
                  />
           <ImageView
               android:layout_alignParentRight="true"

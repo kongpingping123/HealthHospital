@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_200"
+        android:orientation="horizontal"
+        >
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:layout_width="@dimen/dp_130"
+            android:layout_height="@dimen/dp_160"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:id="@+id/follow_iv"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_200"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:orientation="vertical"
+            >
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#090808"
+                    android:text="3333"
+                    android:textSize="16sp"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:id="@+id/follow_name"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#090808"
+                    android:text="3333"
+                    android:textSize="10sp"
+                    android:layout_marginLeft="@dimen/dp_20"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:id="@+id/follow_keshi"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/dp_28"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#090808"
+                    android:text="3333"
+                    android:textSize="10sp"
+                    android:layout_marginLeft="@dimen/dp_20"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:id="@+id/follow_ks"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="查看问诊记录"
+                    android:textSize="16sp"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:id="@+id/follow_jl"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="去评价"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="@dimen/dp_20"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:id="@+id/follow_pj"
+                    />
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_4"
+        android:background="#f2f2f2"
+        android:layout_marginTop="@dimen/dp_200"
+        />
+</RelativeLayout>

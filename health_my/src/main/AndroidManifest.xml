@@ -4,6 +4,7 @@
 
     <application>
         <activity android:name=".activity.InterviewActivity"/>
+        <activity android:name=".activity.SetUpActivity"/>
         <activity android:name=".activity.CollectionActivity"></activity>
         <activity android:name=".activity.MoneyActivity" />
         <activity android:name=".activity.HistoryActivity" />
