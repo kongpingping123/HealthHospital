@@ -53,23 +53,8 @@ public class DeiserActivity extends WDActivity {
         Intent intent = getIntent();
         id = intent.getIntExtra("id", 0);
         disePresenter.reqeust(id);
-
-                 webview.getSettings().setJavaScriptEnabled(true);
-                 webview.setWebViewClient(new WebViewClient());
-
-         webview.loadUrl("http://172.17.8.100/health/share/information/v1/findInformation?infoId=1 ");
-
-
     }
 
-    private String getUnicodeContent() {
-
-        String content = getUnicodeContent() ;
-        settings = webview.getSettings();
-        webview.getSettings().setDefaultTextEncodingName("UTF-8");
-        webview.loadData(content,"text/html","UTF-8");
-        return content;
-    }
 
 
     @Override

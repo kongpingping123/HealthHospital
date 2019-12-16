@@ -49,5 +49,5 @@ dependencies {
     api project(path: ':common')
     api project(path: ':health_main')
     api project(path: ':health_my')
-    
+
 }

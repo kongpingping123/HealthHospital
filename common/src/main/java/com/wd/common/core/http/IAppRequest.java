@@ -43,7 +43,9 @@ import com.wd.common.bean.CircleBean;
 import com.wd.common.bean.DepartmentBean;
 import com.wd.common.bean.DetailsBean;
 import com.wd.common.bean.PatientBean;
+import com.wd.common.bean.Result;
 import com.wd.common.bean.SearchBean;
+import com.wd.common.bean.SousuoBase;
 import com.wd.common.bean.XiangqingBase;
 import com.wd.common.bean.YaoBase;
 import com.wd.common.bean.ZixunBean;
@@ -172,9 +174,16 @@ public interface IAppRequest {
 
              @GET("share/information/v1/findInformation")
            Observable<Result<DtonBase>>deisebase(@Query("infoId")int infoId);
-             //历史搜索
-//             @GET("share/v1/homePageSearch")
-//            Observable<Result<SousuoBase>>ousuohomepage(@Query("keyWord") int keyWord);
+
+
+
+
+
+
+
+
+             @GET("share/v1/homePageSearch")
+            Observable<Result<SousuoBase>>ousuohomepage(@Query("keyWord") int keyWord);
     //根据关键词查询病友圈
     @GET("user/sickCircle/v1/searchSickCircle")
     Observable<Result<List<SearchBean>>>searchSickCircle(@Query("keyWord")String keyWord);
@@ -241,6 +250,10 @@ public interface IAppRequest {
    //查询用户收藏病友圈列表
     @GET("user/verify/v1/findUserSickCollectionList")
     Observable<Result<List<Collection>>>findUserSickCollectionList(@Header("userId")int userId, @Header("sessionId")String sessionId,@Query("page")int page,@Query("count")int count);
+
+    //查询医生明细信息
+
+
 
     //热门搜索
     @GET("share/v1/popularSearch")

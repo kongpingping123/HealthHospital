@@ -1,5 +1,6 @@
 package com.wd.health_patient;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
@@ -8,15 +9,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.example.health_my.activity.MoneyActivity;
 import com.example.health_my.presenter.MoneyPresenter;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.wd.common.bean.DepartmentBean;
@@ -28,6 +28,7 @@ import com.wd.common.core.exception.ApiException;
 import com.wd.common.util.Constant;
 import com.wd.health_main.adapter.FindDepartmentAdapter;
 import com.wd.health_main.presenter.FindDepartmentPresenter;
+import com.wd.health_patient.activity.DoctorDetailsActivity;
 import com.wd.health_patient.adapter.InquiryAdapter;
 import com.wd.health_patient.presenter.FindDoctorListPresenter;
 
@@ -76,6 +77,8 @@ public class InquiryActivity extends WDActivity {
     SimpleDraweeView sdvRight;
     @BindView(R2.id.rv_doctor)
     RecyclerView rvDoctor;
+    @BindView(R2.id.im_tiao)
+    ImageView imTiao;
     private FindDoctorListPresenter findDoctorListPresenter;
     private int idddd;
     private InquiryAdapter inquiryAdapter;
@@ -117,7 +120,7 @@ public class InquiryActivity extends WDActivity {
         ButterKnife.bind(this);
     }
 
-    @OnClick({R2.id.tv_zh, R2.id.tv_hp, R2.id.tv_zxs, R2.id.tv_price,R2.id.tv_ask})
+    @OnClick({R2.id.tv_zh, R2.id.tv_hp, R2.id.tv_zxs, R2.id.tv_price, R2.id.tv_ask})
     public void onViewClicked(View view) {
         int id = view.getId();
         if (id == R.id.tv_zh) {
@@ -128,7 +131,7 @@ public class InquiryActivity extends WDActivity {
             findDoctorListPresenter.reqeust(idddd, 3, 1, 1, 5);
         } else if (id == R.id.tv_price) {
             findDoctorListPresenter.reqeust(idddd, 4, 1, 1, 5);
-        }else if (id == R.id.tv_ask) {
+        } else if (id == R.id.tv_ask) {
 
             moneyPresenter.reqeust(idd, sessionId);
         }
@@ -165,6 +168,14 @@ public class InquiryActivity extends WDActivity {
         popupWindow.showAtLocation(rootView, Gravity.BOTTOM, 0, 0);
     }
 
+    @OnClick(R2.id.im_tiao)
+    public void onViewClicked() {
+        Intent intent = new Intent(InquiryActivity.this, DoctorDetailsActivity.class);
+        //传递数据
+//        intent.putExtra("sickCircleId", sickCircleId);
+        startActivity(intent);
+    }
+
     private class Depart implements DataCall<List<DepartmentBean>> {
         @Override
         public void success(List<DepartmentBean> data, Object... args) {
@@ -174,7 +185,7 @@ public class InquiryActivity extends WDActivity {
             final FindDepartmentAdapter wellreceived = new FindDepartmentAdapter(com.wd.health_main.R.layout.depart_item, data);
             wellreceived.setWork(new FindDepartmentAdapter.Work() {
                 @Override
-                public void sad(int id, String name,int myposition) {
+                public void sad(int id, String name, int myposition) {
                     wellreceived.getIndex(myposition);
                     wellreceived.notifyDataSetChanged();
                     idddd = id;
@@ -206,8 +217,8 @@ public class InquiryActivity extends WDActivity {
             inquiryAdapter = new InquiryAdapter(R.layout.inquiry_item, result);
             inquiryAdapter.setDoctor(new InquiryAdapter.Doctor() {
                 @Override
-                public void sad(Uri image, String name, int myposition,String inauguralHospital,String jobTitle,String praise,int serverNum,int servicePrice) {
-                    sdvPic.setImageURI(image) ;
+                public void sad(Uri image, String name, int myposition, String inauguralHospital, String jobTitle, String praise, int serverNum, int servicePrice) {
+                    sdvPic.setImageURI(image);
                     tvName.setText(name);
                     inquiryAdapter.getIndex(myposition);
                     inquiryAdapter.notifyDataSetChanged();
@@ -237,14 +248,14 @@ public class InquiryActivity extends WDActivity {
             if (data.getStatus().equals("0000")) {
                 DecimalFormat decimalFormat = new DecimalFormat("######0.00");
                 result = (double) data.getResult();
-                if (result>=servicepr){
+                if (result >= servicepr) {
                     //点击判断弹出pop本次将扣除
                     showPopWindow();
-                }else {
+                } else {
                     //H币不足
                     showqueWindow();
                 }
-            }else  if (data.getStatus().equals("9999")){
+            } else if (data.getStatus().equals("9999")) {
                 //请先登录
                 showloginWindow();
             }
